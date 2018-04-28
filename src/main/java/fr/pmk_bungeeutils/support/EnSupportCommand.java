@@ -11,7 +11,7 @@ public class EnSupportCommand extends Command {
 	private static HashMap<ProxiedPlayer,SupportData> supportMap = new HashMap<>();
 	
 	public EnSupportCommand() {
-		super("ensuppor");
+		super("ensupport");
 		// TODO Auto-generated constructor stub
 	}
 
