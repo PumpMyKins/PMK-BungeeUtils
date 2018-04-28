@@ -8,7 +8,7 @@ public class SupportData {
 	
 	private boolean state;
 
-	public boolean isState() {
+	public boolean getState() {
 		return state;
 	}
 
