@@ -4,6 +4,8 @@ import fr.pmk_bungeeutils.blockmod.BlockModCommand;
 import fr.pmk_bungeeutils.blockmod.BlockModListener;
 import fr.pmk_bungeeutils.blockmod.BlockModManager;
 import fr.pmk_bungeeutils.config.ConfigUtils;
+import fr.pmk_bungeeutils.support.SupportCommand;
+import fr.pmk_bungeeutils.support.SupportListener;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -25,9 +27,13 @@ public class MainBungeeUtils extends Plugin{
 		
 		BlockModManager.init(configUtils);
 		
-		//initiasliation
+		//init BlockMod
 		getProxy().getPluginManager().registerListener(this, new BlockModListener());
 		getProxy().getPluginManager().registerCommand(this, new BlockModCommand());
+		
+		// init support
+		getProxy().getPluginManager().registerCommand(this, new SupportCommand());
+		getProxy().getPluginManager().registerListener(this, new SupportListener());
 	}
 	
 	@Override
