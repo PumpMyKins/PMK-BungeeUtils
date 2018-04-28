@@ -4,15 +4,19 @@ import fr.pmk_bungeeutils.blockmod.BlockModCommand;
 import fr.pmk_bungeeutils.blockmod.BlockModListener;
 import fr.pmk_bungeeutils.blockmod.BlockModManager;
 import fr.pmk_bungeeutils.config.ConfigUtils;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;
 
 public class MainBungeeUtils extends Plugin{
 
 	private static ConfigUtils configUtils;
+	private static MainBungeeUtils instance;
 	
 	@Override
 	public void onEnable() {
 		// TODO Auto-generated method stub
+		
+		instance = this;
 		
 		configUtils = ConfigUtils.getConfig(this);
 		
@@ -43,6 +47,19 @@ public class MainBungeeUtils extends Plugin{
 
 	public static void setConfigUtils(ConfigUtils configUtils) {
 		MainBungeeUtils.configUtils = configUtils;
+	}
+
+	@SuppressWarnings("deprecation")
+	public static void updatePlayer() {
+		// TODO Auto-generated method stub
+		
+        for(ProxiedPlayer p: instance.getProxy().getPlayers()){
+        	
+            if(!p.hasPermission(BlockModManager.getOverPerm())) {
+            	p.disconnect("[PUMPMYCORD] Vous ne pouvez pas vous connecter au serveur ! (" + BlockModManager.getRaison() + ")");
+            }
+            
+        }
 	}
 	
 }
