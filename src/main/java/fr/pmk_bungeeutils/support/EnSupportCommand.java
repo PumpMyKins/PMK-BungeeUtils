@@ -15,6 +15,7 @@ public class EnSupportCommand extends Command {
 		// TODO Auto-generated constructor stub
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		
