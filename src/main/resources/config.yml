@@ -1,0 +1,4 @@
+blockmod:
+  active: true
+  override_perm: "blockmod.over"
+  raison: "Serveur non disponible, tenez vous au courant sur le forum/discord"
