@@ -95,4 +95,43 @@ public class ConfigUtils {
 		return "[DEFAULT-RAISON-ERROR] Serveur non disponible, tenez vous au courant sur le forum/discord";
 	}
 	
+	public void setBlockModState(boolean b) {
+		try {
+			Configuration c = getConfiguration("config.yml");			
+			c.set("blockmod.active", b);
+			
+			ConfigurationProvider.getProvider(YamlConfiguration.class).save(c, initAndGetFile("config.yml"));
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		
+	}
+	
+	public void setBlockModRaison(String r) {
+		try {
+			Configuration c = getConfiguration("config.yml");			
+			c.set("blockmod.raison", r);
+			
+			ConfigurationProvider.getProvider(YamlConfiguration.class).save(c, initAndGetFile("config.yml"));
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		
+	}
+	
+	public void setBlockModOverridePerm(String p) {
+		try {
+			Configuration c = getConfiguration("config.yml");			
+			c.set("blockmod.override_perm", p);
+			
+			ConfigurationProvider.getProvider(YamlConfiguration.class).save(c, initAndGetFile("config.yml"));
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		
+	}
+	
 }
