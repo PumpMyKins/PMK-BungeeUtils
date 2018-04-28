@@ -7,3 +7,10 @@ commands:
   blockmod:
     description: Commande controlant le blockage
     usage: /blockmod
+    
+  support:
+    description:  Commande de demande de support
+  
+  ensupport:  
+    description:  Commande d activation de la visibilite ou non
+    
