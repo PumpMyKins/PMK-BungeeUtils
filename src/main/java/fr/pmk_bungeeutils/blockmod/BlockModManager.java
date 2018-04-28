@@ -16,6 +16,14 @@ public class BlockModManager {
 		
 	}
 	
+	public static void save(ConfigUtils c) {
+		
+		c.setBlockModState(isActive());
+		c.setBlockModOverridePerm(getOverPerm());
+		c.setBlockModRaison(getRaison());
+		
+	}
+	
 	public static String getRaison() {
 		return raison;
 	}
