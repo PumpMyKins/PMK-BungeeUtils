@@ -52,14 +52,18 @@ public class MainBungeeUtils extends Plugin{
 	@SuppressWarnings("deprecation")
 	public static void updatePlayer() {
 		// TODO Auto-generated method stub
+		if(BlockModManager.isActive()) {
+			
+			for(ProxiedPlayer p: instance.getProxy().getPlayers()){
+	        	
+	            if(!p.hasPermission(BlockModManager.getOverPerm())) {
+	            	p.disconnect("[PUMPMYCORD] Vous ne pouvez pas vous connecter au serveur ! (" + BlockModManager.getRaison() + ")");
+	            }
+	            
+	        }
+			
+		}
 		
-        for(ProxiedPlayer p: instance.getProxy().getPlayers()){
-        	
-            if(!p.hasPermission(BlockModManager.getOverPerm())) {
-            	p.disconnect("[PUMPMYCORD] Vous ne pouvez pas vous connecter au serveur ! (" + BlockModManager.getRaison() + ")");
-            }
-            
-        }
 	}
 	
 }
