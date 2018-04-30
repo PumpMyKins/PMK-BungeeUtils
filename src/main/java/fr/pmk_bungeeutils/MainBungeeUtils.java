@@ -28,6 +28,9 @@ public class MainBungeeUtils extends Plugin{
 		
 		BlockModManager.init(configUtils);
 		
+		//init listener
+		getProxy().getPluginManager().registerListener(this, new PlayerListener());
+		
 		//init BlockMod
 		getProxy().getPluginManager().registerListener(this, new BlockModListener());
 		getProxy().getPluginManager().registerCommand(this, new BlockModCommand());
