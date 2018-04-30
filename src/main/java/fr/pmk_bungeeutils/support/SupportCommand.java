@@ -34,6 +34,8 @@ public class SupportCommand extends Command {
 			
 			HashMap<ProxiedPlayer, SupportData> h = EnSupportCommand.getSupportMap();
 			
+			p.sendMessage("§9[SUPPORT]§7§l<§r§1" + p.getDisplayName() + "§7§l>§r Votre message à bien été envoyé au support. Il y a actuellement " + h.size() + " personnes connectées pour réponde à votre demande !");
+			
 			for (Entry<ProxiedPlayer, SupportData> e : h.entrySet()) {
 				
 				if(e.getValue().getState()) {
