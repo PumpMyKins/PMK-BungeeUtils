@@ -4,6 +4,7 @@ import fr.pmk_bungeeutils.blockmod.BlockModCommand;
 import fr.pmk_bungeeutils.blockmod.BlockModListener;
 import fr.pmk_bungeeutils.blockmod.BlockModManager;
 import fr.pmk_bungeeutils.config.ConfigUtils;
+import fr.pmk_bungeeutils.listener.PlayerListener;
 import fr.pmk_bungeeutils.support.EnSupportCommand;
 import fr.pmk_bungeeutils.support.SupportCommand;
 import fr.pmk_bungeeutils.support.SupportListener;
@@ -24,7 +25,10 @@ public class MainBungeeUtils extends Plugin{
 		configUtils = ConfigUtils.getConfig(this);
 		
 		configUtils.initDataFolder();
-		configUtils.initAndGetFile("config.yml");		
+		configUtils.initAndGetFile("config.yml");
+		configUtils.initAndGetFile("player.yml");
+		
+		configUtils.initPlayerLogin();
 		
 		BlockModManager.init(configUtils);
 		
@@ -39,11 +43,14 @@ public class MainBungeeUtils extends Plugin{
 		getProxy().getPluginManager().registerCommand(this, new EnSupportCommand());
 		getProxy().getPluginManager().registerCommand(this, new SupportCommand());
 		getProxy().getPluginManager().registerListener(this, new SupportListener());
+		
+		//init lobby
 	}
 	
 	@Override
 	public void onDisable() {
 		// TODO Auto-generated method stub
+		configUtils.setConfigPlayerList(ConfigUtils.getPlayerList());
 		BlockModManager.save(configUtils);
 	}
 	
@@ -59,6 +66,10 @@ public class MainBungeeUtils extends Plugin{
 	public static void setConfigUtils(ConfigUtils configUtils) {
 		MainBungeeUtils.configUtils = configUtils;
 	}
+	
+	public static MainBungeeUtils getInstance() {
+		return instance;
+	}
 
 	@SuppressWarnings("deprecation")
 	public static void updatePlayer() {
@@ -68,7 +79,7 @@ public class MainBungeeUtils extends Plugin{
 			for(ProxiedPlayer p: instance.getProxy().getPlayers()){
 	        	
 	            if(!p.hasPermission(BlockModManager.getOverPerm())) {
-	            	p.disconnect("[PUMPMYCORD] Vous ne pouvez pas vous connecter au serveur ! (" + BlockModManager.getRaison() + ")");
+	            	p.disconnect("§4§l[§r§6PUMPMYCORD§r§4§l]§c Le serveur est maintenant indisponible ! (" + BlockModManager.getRaison() + ")");
 	            }
 	            
 	        }

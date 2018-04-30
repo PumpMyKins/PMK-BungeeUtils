@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.util.List;
 
 import fr.pmk_bungeeutils.MainBungeeUtils;
 import net.md_5.bungee.config.Configuration;
@@ -19,6 +20,7 @@ public class ConfigUtils {
 
 	private static ConfigUtils config = new ConfigUtils(); // variable instancier de la class ConfigUtils par defaut
 	private static MainBungeeUtils main;	// variable contenant une instance courante du Main
+	private static List<String> playerList;
 	
 	/**
 	 * 
@@ -54,6 +56,12 @@ public class ConfigUtils {
 		return file;
 	}
 	
+	public void initPlayerLogin() {
+		
+		playerList = getConfigPlayerList();
+		
+	}
+	
 	public Configuration getConfiguration(String fileName) throws Exception {
 		
 		File file = new File(main.getDataFolder(),fileName);
@@ -63,7 +71,30 @@ public class ConfigUtils {
 		} catch (Exception e) {
 			throw new Exception( fileName + " impossible de récupérer la configuration" );
 		}		
-	}	
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<String> getConfigPlayerList(){
+		try {
+			return (List<String>) getConfiguration("player.yml").getList("playerlogin");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void setConfigPlayerList(List<String> l){
+		try {
+			Configuration c = getConfiguration("player.yml");			
+			c.set("playerlogin", l);
+			
+			ConfigurationProvider.getProvider(YamlConfiguration.class).save(c, initAndGetFile("config.yml"));
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }	
+	}
 	
 	public boolean getBlockModState() {
 		try {
@@ -117,8 +148,7 @@ public class ConfigUtils {
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-		
+        }		
 	}
 	
 	public void setBlockModOverridePerm(String p) {
@@ -132,6 +162,10 @@ public class ConfigUtils {
             e.printStackTrace();
         }
 		
+	}
+
+	public static List<String> getPlayerList() {
+		return playerList;
 	}
 	
 }

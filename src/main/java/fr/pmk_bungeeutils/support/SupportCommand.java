@@ -26,6 +26,7 @@ public class SupportCommand extends Command {
 			
 			if(args.length <= 4) {
 				p.sendMessage("§c Votre message au support doit contenir plus de 4 mots !");
+				return;
 			}
 			
 			for (String a : args) {

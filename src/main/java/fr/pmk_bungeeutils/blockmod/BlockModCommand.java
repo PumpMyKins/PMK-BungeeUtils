@@ -21,11 +21,17 @@ public class BlockModCommand extends Command {
 			ProxiedPlayer p = (ProxiedPlayer)sender;
 			
 			if(!p.hasPermission("blockmod.set")) {
-				p.sendMessage("Pas la perm !");
+				p.sendMessage("§cPas la perm !");
 				return;
 			}
 			
-			p.sendMessage("[BLOCKMOD] option de la commande : -s true/false ( activé ou non ) / -r raison de blockage / -p permissions ( permissions d'overpass ) / -u pour update les joueurs");
+			p.sendMessage("§4======================");
+			p.sendMessage("§4[BLOCKMOD] option de la commande :");
+			p.sendMessage("§c-s true/false");
+			p.sendMessage("§c-r raison de blockage");
+			p.sendMessage("§c-p permissions d'overpass");
+			p.sendMessage("§c-u pour update les joueurs");
+			p.sendMessage("§4======================");
 			
 			//if(!(args.length  <= 2)) {
 				
@@ -46,14 +52,14 @@ public class BlockModCommand extends Command {
 						return;
 						
 					}else {
-						p.sendMessage("Mauvaise argument !");
+						p.sendMessage("§cMauvaise argument !");
 						return;
 					}
 					
 				}else if (param.equalsIgnoreCase("-p")) {
 					
 					String perm = args[1];
-					System.out.println("p : " + perm);
+					//System.out.println("p : " + perm);
 					
 					BlockModManager.setOverPerm(perm);
 					return;
@@ -66,16 +72,18 @@ public class BlockModCommand extends Command {
 						raison += args[i] + " ";
 					}
 					
-					System.out.println("r : " + raison);
+					//System.out.println("r : " + raison);
 					
 					BlockModManager.setRaison(raison);
 					return;
 					
 				}if (param.equalsIgnoreCase("-i")) {
 					
-					p.sendMessage("Perm " + BlockModManager.getOverPerm());
-					p.sendMessage("Raison " + BlockModManager.getRaison());
-					p.sendMessage("State " + BlockModManager.isActive());
+					p.sendMessage("§cPerm " + BlockModManager.getOverPerm());
+					p.sendMessage("§4======================");
+					p.sendMessage("§cRaison " + BlockModManager.getRaison());
+					p.sendMessage("§4======================");
+					p.sendMessage("§cState " + BlockModManager.isActive());
 					return;
 					
 				}else if (param.equalsIgnoreCase("-u")) {
@@ -85,24 +93,12 @@ public class BlockModCommand extends Command {
 					return;
 					
 				}else {
-					p.sendMessage("Mauvaise argument !");
+					p.sendMessage("§cMauvaise argument !");
 					return;
 				}
 				
 			}
 			return;
-			/*
-			String arg = "";
-			
-			for (String string : args) {
-				arg += string + " ";
-			}
-			
-			System.out.println(arg);
-			
-			*/
-		//}
-
 	}
 
 }

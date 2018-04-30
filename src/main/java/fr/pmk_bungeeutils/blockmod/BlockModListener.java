@@ -16,7 +16,8 @@ public class BlockModListener implements Listener {
 		if(BlockModManager.isActive()) {
 			if(!p.hasPermission(BlockModManager.getOverPerm())) {
 
-				p.disconnect("[PUMPMYCORD] Vous ne pouvez pas vous connecter au serveur ! (" + BlockModManager.getRaison() + ")");
+				p.disconnect("§4§l[§r§6PUMPMYCORD§r§4§l]§c Le serveur est actuellement indisponible ! (" + BlockModManager.getRaison() + ")");
+				
 			}
 		}
 		
