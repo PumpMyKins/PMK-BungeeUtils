@@ -27,7 +27,7 @@ public class SupportListener implements Listener {
 		ProxiedPlayer p = e.getPlayer();
 		
 		if(EnSupportCommand.getSupportMap().containsKey(p)) {
-			EnSupportCommand.getSupportMap().put(p, new SupportData(true));
+			EnSupportCommand.getSupportMap().remove(p);
 		}
 	}
 	
