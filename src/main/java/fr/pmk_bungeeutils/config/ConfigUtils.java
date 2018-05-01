@@ -89,7 +89,7 @@ public class ConfigUtils {
 			Configuration c = getConfiguration("player.yml");			
 			c.set("playerlogin", l);
 			
-			ConfigurationProvider.getProvider(YamlConfiguration.class).save(c, initAndGetFile("config.yml"));
+			ConfigurationProvider.getProvider(YamlConfiguration.class).save(c, initAndGetFile("player.yml"));
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

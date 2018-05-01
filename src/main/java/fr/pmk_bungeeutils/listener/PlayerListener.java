@@ -18,7 +18,7 @@ public class PlayerListener implements Listener {
 		
 		ProxiedPlayer p = e.getPlayer();
 		
-		if(BlockModManager.isActive() & !p.hasPermission("blockmod.over")) {
+		//if(!BlockModManager.isActive() & !p.hasPermission("blockmod.over")) {
 			
 			String pUUID = p.getUniqueId().toString();
 			String pName = p.getDisplayName();
@@ -34,7 +34,7 @@ public class PlayerListener implements Listener {
 		        }
 			}
 			
-		}
+		//}
 		
 	}
 	
