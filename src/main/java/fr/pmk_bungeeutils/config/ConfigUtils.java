@@ -168,4 +168,10 @@ public class ConfigUtils {
 		return playerList;
 	}
 	
+	public static void savePlayer() {
+		
+		config.setConfigPlayerList(getPlayerList());
+		
+	}
+	
 }

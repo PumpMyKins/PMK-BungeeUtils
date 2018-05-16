@@ -1,10 +1,14 @@
 package fr.pmk_bungeeutils;
 
+import java.util.concurrent.TimeUnit;
+
 import fr.pmk_bungeeutils.blockmod.BlockModCommand;
 import fr.pmk_bungeeutils.blockmod.BlockModListener;
 import fr.pmk_bungeeutils.blockmod.BlockModManager;
+import fr.pmk_bungeeutils.config.ConfigPlayerSaveScheduler;
 import fr.pmk_bungeeutils.config.ConfigUtils;
 import fr.pmk_bungeeutils.listener.PlayerListener;
+import fr.pmk_bungeeutils.pmkbuy.BuyInfoCommand;
 import fr.pmk_bungeeutils.support.EnSupportCommand;
 import fr.pmk_bungeeutils.support.SupportCommand;
 import fr.pmk_bungeeutils.support.SupportListener;
@@ -44,7 +48,11 @@ public class MainBungeeUtils extends Plugin{
 		getProxy().getPluginManager().registerCommand(this, new SupportCommand());
 		getProxy().getPluginManager().registerListener(this, new SupportListener());
 		
-		//init lobby
+		// buy info commande
+		getProxy().getPluginManager().registerCommand(this, new BuyInfoCommand());
+		
+		new ConfigPlayerSaveScheduler().start();
+		
 	}
 	
 	@Override
