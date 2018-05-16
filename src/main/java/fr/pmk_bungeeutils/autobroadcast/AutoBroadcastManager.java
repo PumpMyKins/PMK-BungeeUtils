@@ -152,7 +152,7 @@ public class AutoBroadcastManager {
 				
 				
 			}
-		}, 1 , 30 , TimeUnit.SECONDS);
+		}, 1 , 6 , TimeUnit.MINUTES);
 		
 	}
 	
