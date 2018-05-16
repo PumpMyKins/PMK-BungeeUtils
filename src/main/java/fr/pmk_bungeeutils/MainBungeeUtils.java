@@ -2,6 +2,7 @@ package fr.pmk_bungeeutils;
 
 import java.util.concurrent.TimeUnit;
 
+import fr.pmk_bungeeutils.autobroadcast.AutoBroadcastManager;
 import fr.pmk_bungeeutils.blockmod.BlockModCommand;
 import fr.pmk_bungeeutils.blockmod.BlockModListener;
 import fr.pmk_bungeeutils.blockmod.BlockModManager;
@@ -12,6 +13,7 @@ import fr.pmk_bungeeutils.pmkbuy.BuyInfoCommand;
 import fr.pmk_bungeeutils.support.EnSupportCommand;
 import fr.pmk_bungeeutils.support.SupportCommand;
 import fr.pmk_bungeeutils.support.SupportListener;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -53,6 +55,8 @@ public class MainBungeeUtils extends Plugin{
 		
 		new ConfigPlayerSaveScheduler().start();
 		
+		new AutoBroadcastManager().startScheduler();
+		
 	}
 	
 	@Override
@@ -91,6 +95,16 @@ public class MainBungeeUtils extends Plugin{
 	            }
 	            
 	        }
+			
+		}
+		
+	}
+	
+	public static void sendAllPlayerMsg(TextComponent t) {
+		
+		for(ProxiedPlayer p: instance.getProxy().getPlayers()){
+			
+			p.sendMessage(t);
 			
 		}
 		
