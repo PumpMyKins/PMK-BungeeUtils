@@ -17,7 +17,7 @@ public class ConfigPlayerSaveScheduler {
 				ConfigUtils.savePlayer();
 				
 			}
-		}, 1 , TimeUnit.MINUTES);
+		}, 1 , 1 , TimeUnit.HOURS);
 		
 	}
 	

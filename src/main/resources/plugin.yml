@@ -13,4 +13,7 @@ commands:
   
   ensupport:  
     description:  Commande d activation de la visibilite ou non
+  
+  pmkbuyinfo:
+    description: Commande d information d achat sur la boutique
     

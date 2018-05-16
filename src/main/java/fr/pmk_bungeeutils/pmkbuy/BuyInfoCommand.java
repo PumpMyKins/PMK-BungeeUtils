@@ -17,7 +17,7 @@ public class BuyInfoCommand extends Command {
 	public void execute(CommandSender sender, String[] args) {
 		
 		String username = args[0];
-		String montant = args[1];
+		String montant = args[1] + args[2];
 		
 		for(ProxiedPlayer p: MainBungeeUtils.getInstance().getProxy().getPlayers()){
 			
