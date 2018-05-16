@@ -55,6 +55,7 @@ public class MainBungeeUtils extends Plugin{
 		
 		new ConfigPlayerSaveScheduler().start();
 		
+		AutoBroadcastManager.init();
 		new AutoBroadcastManager().startScheduler();
 		
 	}
