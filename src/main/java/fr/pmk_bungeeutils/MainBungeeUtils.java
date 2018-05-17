@@ -1,7 +1,5 @@
 package fr.pmk_bungeeutils;
 
-import java.util.concurrent.TimeUnit;
-
 import fr.pmk_bungeeutils.autobroadcast.AutoBroadcastManager;
 import fr.pmk_bungeeutils.blockmod.BlockModCommand;
 import fr.pmk_bungeeutils.blockmod.BlockModListener;
@@ -10,6 +8,7 @@ import fr.pmk_bungeeutils.config.ConfigPlayerSaveScheduler;
 import fr.pmk_bungeeutils.config.ConfigUtils;
 import fr.pmk_bungeeutils.listener.PlayerListener;
 import fr.pmk_bungeeutils.pmkbuy.BuyInfoCommand;
+import fr.pmk_bungeeutils.scheduler.BuyCraftScheduler;
 import fr.pmk_bungeeutils.support.EnSupportCommand;
 import fr.pmk_bungeeutils.support.SupportCommand;
 import fr.pmk_bungeeutils.support.SupportListener;
@@ -57,6 +56,12 @@ public class MainBungeeUtils extends Plugin{
 		
 		AutoBroadcastManager.init();
 		new AutoBroadcastManager().startScheduler();
+		
+		new BuyCraftScheduler().start();
+		
+	
+		
+		
 		
 	}
 	
