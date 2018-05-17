@@ -40,7 +40,7 @@ public class AutoBroadcastManager {
 		url = new TextComponent("BOUTIQUE");
 		
 		url.setColor(ChatColor.RED);
-		url.setClickEvent(new ClickEvent(Action.OPEN_URL, ""));
+		url.setClickEvent(new ClickEvent(Action.OPEN_URL, "https://pumpmykins.buycraft.net/"));
 		
 		t = new TextComponent("[Boutique] Achetez vos grades / avantages sur la ");
 		t.setColor(ChatColor.YELLOW);
@@ -54,7 +54,7 @@ public class AutoBroadcastManager {
 		url = new TextComponent("SITE / FORUM");
 		
 		url.setColor(ChatColor.RED);
-		url.setClickEvent(new ClickEvent(Action.OPEN_URL, ""));
+		url.setClickEvent(new ClickEvent(Action.OPEN_URL, "http://pumpmykins.eu"));
 		
 		t = new TextComponent("[PumpMyKins] ");
 		t.setColor(ChatColor.GREEN);
