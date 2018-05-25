@@ -3,7 +3,6 @@ package fr.pmk_bungeeutils.listener;
 import java.util.List;
 
 import fr.pmk_bungeeutils.MainBungeeUtils;
-import fr.pmk_bungeeutils.blockmod.BlockModManager;
 import fr.pmk_bungeeutils.config.ConfigUtils;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.PostLoginEvent;

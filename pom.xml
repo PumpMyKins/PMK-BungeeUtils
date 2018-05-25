@@ -10,6 +10,13 @@
             <id>bungeecord-repo</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </repository>
+        
+        <repository>
+    		<id>jcenter</id>
+    		<name>jcenter-bintray</name>
+    		<url>http://jcenter.bintray.com</url>
+		</repository>
+        
     </repositories>
 
     <build>
@@ -76,5 +83,12 @@
             <type>javadoc</type>
             <scope>provided</scope>
         </dependency>
+        
+        <dependency>
+    		<groupId>net.dv8tion</groupId>
+    		<artifactId>JDA</artifactId>
+    		<version>3.6.0_366</version>
+		</dependency>
+        
     </dependencies>
 </project>
