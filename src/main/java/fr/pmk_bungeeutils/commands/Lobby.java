@@ -18,7 +18,12 @@ public class Lobby extends Command {
 		
 		if(sender instanceof ProxiedPlayer) {
 			ProxiedPlayer player = (ProxiedPlayer) sender;
-			player.sendMessage(new TextComponent("§6Téléportation au lobby..."));
+			try {
+				player.sendMessage(new TextComponent(MainBungeeUtils.getConfigUtils().getConfiguration("config.yml").getString("lobby.message").replace("&", "§")));
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			try {
 				player.connect(ProxyServer.getInstance().getServerInfo(MainBungeeUtils.getConfigUtils().getConfiguration("config.yml").getString("lobby.name")));
 			} catch (Exception e) {
