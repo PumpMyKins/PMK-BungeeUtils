@@ -4,6 +4,7 @@ import fr.pmk_bungeeutils.autobroadcast.AutoBroadcastManager;
 import fr.pmk_bungeeutils.blockmod.BlockModCommand;
 import fr.pmk_bungeeutils.blockmod.BlockModListener;
 import fr.pmk_bungeeutils.blockmod.BlockModManager;
+import fr.pmk_bungeeutils.commands.Lobby;
 import fr.pmk_bungeeutils.config.ConfigPlayerSaveScheduler;
 import fr.pmk_bungeeutils.config.ConfigUtils;
 import fr.pmk_bungeeutils.listener.PlayerListener;
@@ -36,6 +37,9 @@ public class MainBungeeUtils extends Plugin{
 		configUtils.initPlayerLogin();
 		
 		BlockModManager.init(configUtils);
+		
+		//commande /lobby
+		getProxy().getPluginManager().registerCommand(this, new Lobby("lobby"));
 		
 		//init listener
 		getProxy().getPluginManager().registerListener(this, new PlayerListener());
