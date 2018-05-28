@@ -5,6 +5,7 @@ import fr.pmk_bungeeutils.blockmod.BlockModCommand;
 import fr.pmk_bungeeutils.blockmod.BlockModListener;
 import fr.pmk_bungeeutils.blockmod.BlockModManager;
 import fr.pmk_bungeeutils.commands.Lobby;
+import fr.pmk_bungeeutils.commands.Rules;
 import fr.pmk_bungeeutils.config.ConfigPlayerSaveScheduler;
 import fr.pmk_bungeeutils.config.ConfigUtils;
 import fr.pmk_bungeeutils.listener.PlayerListener;
@@ -33,6 +34,7 @@ public class MainBungeeUtils extends Plugin{
 		configUtils.initDataFolder();
 		configUtils.initAndGetFile("config.yml");
 		configUtils.initAndGetFile("player.yml");
+		configUtils.initAndGetFile("rules.yml");
 		
 		configUtils.initPlayerLogin();
 		
@@ -40,6 +42,9 @@ public class MainBungeeUtils extends Plugin{
 		
 		//commande /lobby
 		getProxy().getPluginManager().registerCommand(this, new Lobby("lobby"));
+		
+		//commande /rules
+		getProxy().getPluginManager().registerCommand(this, new Rules("rules"));
 		
 		//init listener
 		getProxy().getPluginManager().registerListener(this, new PlayerListener());
