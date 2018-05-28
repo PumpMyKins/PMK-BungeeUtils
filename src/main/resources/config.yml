@@ -8,3 +8,4 @@ discord:
 
 lobby:
    name: "lobby"
+   message: "&6Teleportation au lobby..."
