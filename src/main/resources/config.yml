@@ -5,6 +5,6 @@ blockmod:
   
 discord:
   token:
-  
-  
-  
+
+lobby:
+   name: "lobby"
