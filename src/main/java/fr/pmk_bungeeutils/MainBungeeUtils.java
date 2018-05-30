@@ -35,10 +35,14 @@ public class MainBungeeUtils extends Plugin{
 		configUtils.initAndGetFile("config.yml");
 		configUtils.initAndGetFile("player.yml");
 		configUtils.initAndGetFile("rules.yml");
+		configUtils.initAndGetFile("aide.yml");
 		
 		configUtils.initPlayerLogin();
 		
 		BlockModManager.init(configUtils);
+		
+		//commande /aide
+		getProxy().getPluginManager().registerCommand(this, new Aide("aide"));
 		
 		//commande /lobby
 		getProxy().getPluginManager().registerCommand(this, new Lobby("lobby"));
