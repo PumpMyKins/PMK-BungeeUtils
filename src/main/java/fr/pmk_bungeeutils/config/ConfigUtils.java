@@ -126,6 +126,56 @@ public class ConfigUtils {
 		return "[DEFAULT-RAISON-ERROR] Serveur non disponible, tenez vous au courant sur le forum/discord";
 	}
 	
+	public String getBotToken() {
+		try {
+			return getConfiguration("config.yml").getString("discord.token");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "no-token";
+	}
+	
+	public String getBddUrl() {
+		try {
+			return getConfiguration("config.yml").getString("coins.url");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "none";
+	}
+	
+	public String getBddUser() {
+		try {
+			return getConfiguration("config.yml").getString("coins.user");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "none";
+	}
+	
+	public String getBddMdp() {
+		try {
+			return getConfiguration("config.yml").getString("coins.mdp");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "none";
+	}
+	
+	public String getBddBase() {
+		try {
+			return getConfiguration("config.yml").getString("coins.database");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "none";
+	}
+	
 	public void setBlockModState(boolean b) {
 		try {
 			Configuration c = getConfiguration("config.yml");			
