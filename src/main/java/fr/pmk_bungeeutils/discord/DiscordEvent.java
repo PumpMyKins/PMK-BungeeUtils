@@ -1,5 +1,6 @@
 package fr.pmk_bungeeutils.discord;
 
+import fr.pmk_bungeeutils.security.SessionLoggerManager;
 import net.dv8tion.jda.core.events.Event;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.EventListener;
@@ -27,12 +28,14 @@ public class DiscordEvent implements EventListener{
 		
 		if(e.getChannel().getId().equals("453229576269725726")) {
 			// session logger canal
-			new SessionLoggerManager().onReceivedLogger(e);			
+			new SessionLoggerManager().onDiscordReceivedLogger(e);			
 			
 		}else if(e.getChannel().getId().equals("")){
 			// général bot canal
 			
 			
+		}else {
+			//nothing
 		}
 		
 	}
