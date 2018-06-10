@@ -4,10 +4,12 @@ import fr.pmk_bungeeutils.autobroadcast.AutoBroadcastManager;
 import fr.pmk_bungeeutils.blockmod.BlockModCommand;
 import fr.pmk_bungeeutils.blockmod.BlockModListener;
 import fr.pmk_bungeeutils.blockmod.BlockModManager;
+import fr.pmk_bungeeutils.commands.Aide;
 import fr.pmk_bungeeutils.commands.Lobby;
 import fr.pmk_bungeeutils.commands.Rules;
 import fr.pmk_bungeeutils.config.ConfigPlayerSaveScheduler;
 import fr.pmk_bungeeutils.config.ConfigUtils;
+import fr.pmk_bungeeutils.discord.MisterPorg;
 import fr.pmk_bungeeutils.listener.PlayerListener;
 import fr.pmk_bungeeutils.pmkbuy.BuyInfoCommand;
 import fr.pmk_bungeeutils.scheduler.BuyCraftScheduler;
@@ -22,6 +24,7 @@ public class MainBungeeUtils extends Plugin{
 
 	private static ConfigUtils configUtils;
 	private static MainBungeeUtils instance;
+	private static MisterPorg misterPorg;
 	
 	@Override
 	public void onEnable() {
@@ -38,6 +41,17 @@ public class MainBungeeUtils extends Plugin{
 		configUtils.initAndGetFile("aide.yml");
 		
 		configUtils.initPlayerLogin();
+		
+		System.out.println("Mister Porg init");
+		String token = configUtils.getBotToken();
+		
+		if(!token.equals("no-token")) {
+			System.out.println("Mister Porg token found");
+			misterPorg = new MisterPorg();
+			
+			misterPorg.start(token);
+			
+		}
 		
 		BlockModManager.init(configUtils);
 		
@@ -74,7 +88,7 @@ public class MainBungeeUtils extends Plugin{
 		
 	
 		
-		
+				
 		
 	}
 	
@@ -127,6 +141,14 @@ public class MainBungeeUtils extends Plugin{
 			
 		}
 		
+	}
+
+	public static MisterPorg getMisterPorg() {
+		return misterPorg;
+	}
+
+	public static void setMisterPorg(MisterPorg misterPorg) {
+		MainBungeeUtils.misterPorg = misterPorg;
 	}
 	
 }
