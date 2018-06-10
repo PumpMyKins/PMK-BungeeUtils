@@ -4,8 +4,14 @@ blockmod:
   raison: "Serveur non disponible, tenez vous au courant sur le forum/discord"
   
 discord:
-  token:
+  token: ""
 
 lobby:
    name: "lobby"
    message: "&6Teleportation au lobby..."
+
+coins:
+  url: "localhost"
+  user: "pmk_coins"
+  mdp: "mdp"
+  database: "pmk_coins"
