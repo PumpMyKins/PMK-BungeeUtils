@@ -83,7 +83,6 @@ public class SessionLoggerManager {
 		
 	}
 
-	@SuppressWarnings("deprecation")
 	private void onLinkAccountCommand(MessageReceivedEvent e, String... args) {
 		// TODO Auto-generated method stub
 		
