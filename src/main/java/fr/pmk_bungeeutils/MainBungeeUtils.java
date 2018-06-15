@@ -13,6 +13,7 @@ import fr.pmk_bungeeutils.discord.MisterPorg;
 import fr.pmk_bungeeutils.listener.PlayerListener;
 import fr.pmk_bungeeutils.pmkbuy.BuyInfoCommand;
 import fr.pmk_bungeeutils.scheduler.BuyCraftScheduler;
+import fr.pmk_bungeeutils.security.SessionLoggerUtils;
 import fr.pmk_bungeeutils.support.EnSupportCommand;
 import fr.pmk_bungeeutils.support.SupportCommand;
 import fr.pmk_bungeeutils.support.SupportListener;
@@ -54,6 +55,8 @@ public class MainBungeeUtils extends Plugin{
 		}
 		
 		BlockModManager.init(configUtils);
+		
+		SessionLoggerUtils.registerCommands();
 		
 		//commande /aide
 		getProxy().getPluginManager().registerCommand(this, new Aide("aide"));

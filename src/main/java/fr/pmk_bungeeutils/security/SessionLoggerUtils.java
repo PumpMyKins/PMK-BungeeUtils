@@ -2,8 +2,11 @@ package fr.pmk_bungeeutils.security;
 
 import java.util.HashMap;
 
+import fr.pmk_bungeeutils.MainBungeeUtils;
+import fr.pmk_bungeeutils.security.commands.LinkCommand;
 import net.dv8tion.jda.core.entities.User;
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.ClickEvent.Action;
@@ -15,7 +18,10 @@ public class SessionLoggerUtils {
 	
 	public static void registerCommands() {
 		
+		ProxyServer proxy = ProxyServer.getInstance();
+		MainBungeeUtils m = MainBungeeUtils.getInstance();
 		
+		proxy.getPluginManager().registerCommand(m, new LinkCommand("link"));
 		
 	}
 	

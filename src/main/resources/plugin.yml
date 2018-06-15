@@ -17,3 +17,6 @@ commands:
   pmkbuyinfo:
     description: Commande d information d achat sur la boutique
     
+  link:
+    description: cmd liaison discord
+    
