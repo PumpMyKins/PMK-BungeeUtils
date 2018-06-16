@@ -10,6 +10,8 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 public class SessionLoggerManager {
 	
+	public static String channelID = "453229576269725726";
+	
 	public void onDiscordReceivedLogger(MessageReceivedEvent e) {
 		// TODO Auto-generated method stub
 		
