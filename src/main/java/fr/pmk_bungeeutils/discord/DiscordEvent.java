@@ -29,7 +29,7 @@ public class DiscordEvent implements EventListener{
 		if(e.getAuthor().isBot())
 			return;
 		
-		if(e.getChannel().getId().equals("453229576269725726")) {
+		if(e.getChannel().getId().equals(SessionLoggerManager.channelID)) {
 			// session logger canal
 			new SessionLoggerManager().onDiscordReceivedLogger(e);			
 			
