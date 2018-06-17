@@ -4,11 +4,13 @@ import fr.pmk_bungeeutils.autobroadcast.AutoBroadcastManager;
 import fr.pmk_bungeeutils.blockmod.BlockModCommand;
 import fr.pmk_bungeeutils.blockmod.BlockModListener;
 import fr.pmk_bungeeutils.blockmod.BlockModManager;
+import fr.pmk_bungeeutils.coins.CoinsManager;
 import fr.pmk_bungeeutils.commands.Aide;
 import fr.pmk_bungeeutils.commands.Lobby;
 import fr.pmk_bungeeutils.commands.Rules;
 import fr.pmk_bungeeutils.config.ConfigPlayerSaveScheduler;
 import fr.pmk_bungeeutils.config.ConfigUtils;
+import fr.pmk_bungeeutils.config.MySQLConnector;
 import fr.pmk_bungeeutils.discord.MisterPorg;
 import fr.pmk_bungeeutils.listener.PlayerListener;
 import fr.pmk_bungeeutils.pmkbuy.BuyInfoCommand;
@@ -20,6 +22,7 @@ import fr.pmk_bungeeutils.support.SupportListener;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;
+import net.md_5.bungee.config.Configuration;
 
 public class MainBungeeUtils extends Plugin{
 
@@ -55,6 +58,18 @@ public class MainBungeeUtils extends Plugin{
 		}
 		
 		BlockModManager.init(configUtils);
+		
+		String url = configUtils.getBddUrl();
+	    String user = configUtils.getBddUser();
+	    String mdp = configUtils.getBddMdp();
+	    String base = configUtils.getBddBase();
+	        
+	    //initialisation de la class MySQLConnector
+	    MySQLConnector mySqlConnector = MySQLConnector.init(url, user, mdp, base);
+		
+		CoinsManager coinsManager = CoinsManager.init(this, mySqlConnector);
+		
+		
 		
 		SessionLoggerUtils.registerCommands();
 		
