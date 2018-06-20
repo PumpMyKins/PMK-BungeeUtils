@@ -6,12 +6,9 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import fr.pmk_bungeeutils.MainBungeeUtils;
-import fr.pmk_bungeeutils.config.ConfigUtils;
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ClickEvent.Action;
-import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 
 public class AutoBroadcastManager {

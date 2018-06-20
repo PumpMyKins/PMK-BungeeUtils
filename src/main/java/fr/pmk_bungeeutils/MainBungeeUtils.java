@@ -71,6 +71,7 @@ public class MainBungeeUtils extends Plugin{
 	    //initialisation de la class MySQLConnector
 	    MySQLConnector.init(url, user, mdp, base);
 		
+		@SuppressWarnings("unused")
 		CoinsManager coinsManager = CoinsManager.init(this);	
 	    
 		SessionLoggerUtils.registerCommands();
@@ -96,7 +97,9 @@ public class MainBungeeUtils extends Plugin{
 		List<String> aide = new ArrayList<>();
 		
 		try {
+			
 			aide = (List<String>) MainBungeeUtils.getConfigUtils().getConfiguration("aide.yml").getList("aide");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -108,7 +111,9 @@ public class MainBungeeUtils extends Plugin{
 		List<String> rule = new ArrayList<>();	
 		
 		try {
+			
 			rule = (List<String>) MainBungeeUtils.getConfigUtils().getConfiguration("rules.yml").getList("rules");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
