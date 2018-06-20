@@ -22,13 +22,19 @@ public class Rules extends Command {
 	public void execute(CommandSender sender, String[] args) {
 		
 		if(sender instanceof ProxiedPlayer) {
+			
 			ProxiedPlayer player = (ProxiedPlayer) sender;
-			try {
-				player.sendMessage(new TextComponent(MainBungeeUtils.getConfigUtils().getConfiguration("rules.yml").getString("rules")));
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			
+			player.sendMessage(new TextComponent("§3§l=======§r§b PumpMyRules§r§3§l ======="));
+			
+			for (String string : list) {
+				
+				player.sendMessage(new TextComponent("- " + string.replace("&", "§")));
+				
 			}
+			
+			player.sendMessage(new TextComponent("§3§l=========================="));
+			
 		}
 
 	}
