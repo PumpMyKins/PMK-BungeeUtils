@@ -71,7 +71,7 @@ public class MainBungeeUtils extends Plugin{
 			Configuration conf = configUtils.getConfiguration("config.yml");
 			
 			server = conf.getString("lobby.name");
-			message = conf.getString("lobby.message");
+			message = conf.getString("lobby.message").replace("&", "§");
 			
 			
 		} catch (Exception e) {
