@@ -63,6 +63,21 @@ public class MainBungeeUtils extends Plugin{
 	    String user = configUtils.getBddUser();
 	    String mdp = configUtils.getBddMdp();
 	    String base = configUtils.getBddBase();
+	    
+	    String server = "lobby";
+	    String message = "default";
+		try {
+			
+			Configuration conf = configUtils.getConfiguration("config.yml");
+			
+			server = conf.getString("lobby.name");
+			message = conf.getString("lobby.message");
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	        
 	    //initialisation de la class MySQLConnector
 	    MySQLConnector.init(url, user, mdp, base);
@@ -75,7 +90,7 @@ public class MainBungeeUtils extends Plugin{
 		getProxy().getPluginManager().registerCommand(this, new Aide("aide"));
 		
 		//commande /lobby
-		getProxy().getPluginManager().registerCommand(this, new Lobby("lobby"));
+		getProxy().getPluginManager().registerCommand(this, new Lobby("lobby",message,server));
 		
 		//commande /rules
 		getProxy().getPluginManager().registerCommand(this, new Rules("rules"));
