@@ -21,17 +21,19 @@ public class Lobby extends Command {
 	}
 
 	@Override
-	public void execute(CommandSender sender, String[] args) {		
+	public void execute(CommandSender sender, String[] args) {
+		
 		
 		if(sender instanceof ProxiedPlayer) {
 			
 			ProxiedPlayer player = (ProxiedPlayer) sender;
 			String currentServer = player.getServer().getInfo().getName();
 			
-			if(currentServer.equals(server)) {
-				
-				player.sendMessage(new TextComponent(message));
-				
+			System.out.println(currentServer);
+			
+			if(!currentServer.equals(server)) {
+								player.sendMessage(new TextComponent(message));	
+			
 				MainBungeeUtils.getInstance().getProxy().getScheduler().schedule(MainBungeeUtils.getInstance(), new Runnable() {
 		            @Override
 		            public void run() {
@@ -45,15 +47,13 @@ public class Lobby extends Command {
 		            	
 		            }
 		        }, 3 , TimeUnit.SECONDS);
-				
+					
 			}else {
+								player.sendMessage(new TextComponent("§cVous etes déjà connecté au serveur lobby"));	
 				
-				player.sendMessage(new TextComponent("§cVous etes déjà connecté au serveur lobby"));
-				
-			}			
-			
+			}
 		}
-
+			
 	}
 
 }
