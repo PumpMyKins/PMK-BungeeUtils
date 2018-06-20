@@ -29,7 +29,6 @@ public class Lobby extends Command {
 			ProxiedPlayer player = (ProxiedPlayer) sender;
 			String currentServer = player.getServer().getInfo().getName();
 			
-			System.out.println(currentServer);
 			
 			if(!currentServer.equals(server)) {
 								player.sendMessage(new TextComponent(message));	
