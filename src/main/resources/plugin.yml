@@ -18,5 +18,17 @@ commands:
     description: Commande d information d achat sur la boutique
     
   link:
-    description: cmd liaison discord
+    description: commande liaison discord
+    
+  lobby:
+    description: commande de retour au lobby
+    
+  rules:
+    description: commande d'affichage des règles
+  
+  aide:
+    description: commande d'affichage des aides
+  
+  coins:
+    description: Commande d'affichage du nombre de coins
     
