@@ -65,11 +65,9 @@ public class MainBungeeUtils extends Plugin{
 	    String base = configUtils.getBddBase();
 	        
 	    //initialisation de la class MySQLConnector
-	    MySQLConnector mySqlConnector = MySQLConnector.init(url, user, mdp, base);
+	    MySQLConnector.init(url, user, mdp, base);
 		
-		CoinsManager coinsManager = CoinsManager.init(this, mySqlConnector);
-		
-		
+		CoinsManager coinsManager = CoinsManager.init(this);		
 		
 		SessionLoggerUtils.registerCommands();
 		
