@@ -11,21 +11,21 @@ public class CoinsManager {
 
 	private static MainBungeeUtils m;
 
-	public static CoinsManager init(MainBungeeUtils mainBungeeUtils, MySQLConnector sql) {
+	public static CoinsManager init(MainBungeeUtils mainBungeeUtils) {
 		// TODO Auto-generated method stub
 		m = mainBungeeUtils;
 		
-		CoinsManager cm = new CoinsManager(sql);
+		CoinsManager cm = new CoinsManager();
 		
 		registerCommands(cm);
 		registerMessagingPluginEvent(cm);
 		
-		return new CoinsManager(sql);
+		return cm;
 	}
 	
 	private static void registerCommands(CoinsManager cm) {
 		
-		
+		m.getProxy().getPluginManager().registerCommand(m, new CoinsCommand("coins",cm));
 		
 	}
 	
@@ -43,17 +43,10 @@ public class CoinsManager {
 	public static void setMainInstance(MainBungeeUtils m) {
 		CoinsManager.m = m;
 	}
-
-	private MySQLConnector sql;
-	
-	public CoinsManager(MySQLConnector s) {
-		// TODO Auto-generated constructor stub
-		this.setSql(s);
-	}
 	
 	public void initPlayer(ProxiedPlayer p) {
 		
-		sql.sendUpdate("INSERT INTO coins(uuid) VALUES (" + p.getUniqueId().toString() + ")");
+		new MySQLConnector().sendUpdate("INSERT INTO `coins`(`uuid`) VALUES (\"" + p.getUniqueId().toString() + "\")");
 		
 	}
 	
@@ -79,11 +72,9 @@ public class CoinsManager {
 	
 	public int getPlayerCoins(ProxiedPlayer p) throws SQLException {
 		
-		ResultSet r = sql.sendQuery("SELECT coin FROM coins WHERE uuid=\"abcd\"");	
+		ResultSet r = new MySQLConnector().sendQuery("SELECT coin FROM coins WHERE uuid=\"" + p.getUniqueId().toString() + "\"");	
 		
 		if(r.next()) {
-			
-			r.next();
 			
 			int coin = r.getInt("coin");
 			
@@ -97,16 +88,8 @@ public class CoinsManager {
 	
 	public void setPlayerCoins(ProxiedPlayer p, int c) {
 		
-		sql.sendUpdate("UPDATE coins SET coin="+ c +" WHERE uuid=" + p.getUniqueId().toString());
+		new MySQLConnector().sendUpdate("UPDATE coins SET coin="+ c +" WHERE uuid=" + p.getUniqueId().toString());
 		
-	}
-
-	public MySQLConnector getSql() {
-		return sql;
-	}
-
-	public void setSql(MySQLConnector sql) {
-		this.sql = sql;
 	}
 	
 }
