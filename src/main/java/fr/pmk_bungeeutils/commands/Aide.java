@@ -1,6 +1,7 @@
 package fr.pmk_bungeeutils.commands;
 
-import fr.pmk_bungeeutils.MainBungeeUtils;
+import java.util.List;
+
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -8,8 +9,11 @@ import net.md_5.bungee.api.plugin.Command;
 
 public class Aide extends Command {
 
-	public Aide(String name) {
+	private List<String> list;
+	
+	public Aide(String name, List<String> l) {
 		super(name);
+		this.list = l;
 	}
 
 	@Override
@@ -17,12 +21,17 @@ public class Aide extends Command {
 		
 		if(sender instanceof ProxiedPlayer) {
 			ProxiedPlayer player = (ProxiedPlayer) sender;
-			try {
-				player.sendMessage(new TextComponent(MainBungeeUtils.getConfigUtils().getConfiguration("aide.yml").getString("aide")));
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+			player.sendMessage(new TextComponent("§3§l=======§r§b PumpMyAide§r§3§l ======="));
+			
+			for (String string : list) {
+				
+				player.sendMessage(new TextComponent("- " + string.replace("&", "§")));
+				
 			}
+			
+			player.sendMessage(new TextComponent("§3§l=========================="));
+			
 		}
 
 	}
