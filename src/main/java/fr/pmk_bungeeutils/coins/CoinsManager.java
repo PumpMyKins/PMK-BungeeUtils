@@ -1,23 +1,29 @@
 package fr.pmk_bungeeutils.coins;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import fr.pmk_bungeeutils.MainBungeeUtils;
 import fr.pmk_bungeeutils.config.MySQLConnector;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 public class CoinsManager {
 
 	private static MainBungeeUtils m;
 
-	public static CoinsConnector init(MainBungeeUtils mainBungeeUtils, MySQLConnector sql) {
+	public static CoinsManager init(MainBungeeUtils mainBungeeUtils, MySQLConnector sql) {
 		// TODO Auto-generated method stub
 		m = mainBungeeUtils;
 		
 		registerCommands();
 		registerMessagingPluginEvent();
 		
-		return new CoinsConnector(sql);
+		return new CoinsManager(sql);
 	}
 	
 	private static void registerCommands() {
+		
+		
 		
 	}
 	
@@ -32,30 +38,70 @@ public class CoinsManager {
 	public static void setMainInstance(MainBungeeUtils m) {
 		CoinsManager.m = m;
 	}
+
+	private MySQLConnector sql;
 	
-	private static class CoinsConnector {
+	public CoinsManager(MySQLConnector s) {
+		// TODO Auto-generated constructor stub
+		this.setSql(s);
+	}
+	
+	public void initPlayer(ProxiedPlayer p) {
+		
+		
+		
+	}
+	
+	public boolean containPlayer(ProxiedPlayer p) {
+		
+		try {
+			if(getPlayerCoins(p) == -1) {
+				
+				return false;
+				
+			}else {
+				
+				return true;
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
+	public int getPlayerCoins(ProxiedPlayer p) throws SQLException {
+		
+		ResultSet r = sql.sendQuery("SELECT coin FROM coins WHERE uuid=\"abcd\"");	
+		
+		if(r.next()) {
+			
+			r.next();
+			
+			int coin = r.getInt("coin");
+			
+			return coin;
+			
+		}
+		
+		return -1;
+		
+	}
+	
+	public void setPlayerCoins(ProxiedPlayer p, int c) {
+		
+		
+		
+	}
 
-		private MySQLConnector mySqlConnector;
-		
-		public CoinsConnector(MySQLConnector sql) {
-			// TODO Auto-generated constructor stub
-			this.mySqlConnector = sql;		
-		}
-		
-		public int getPlayerCoins() {
-			return 0;
-		}
+	public MySQLConnector getSql() {
+		return sql;
+	}
 
-		public MySQLConnector getMySqlConnector() {
-			return mySqlConnector;
-		}
-
-		public void setMySqlConnector(MySQLConnector mySqlConnector) {
-			this.mySqlConnector = mySqlConnector;
-		}
-		
-		
-		
+	public void setSql(MySQLConnector sql) {
+		this.sql = sql;
 	}
 	
 }
