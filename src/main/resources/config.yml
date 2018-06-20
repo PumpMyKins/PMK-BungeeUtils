@@ -11,7 +11,7 @@ lobby:
    message: "&6Teleportation au lobby..."
 
 coins:
-  url: "localhost"
+  url: "web.pumpmykins.eu"
   user: "pmk_coins"
   mdp: "mdp"
   database: "pmk_coins"
