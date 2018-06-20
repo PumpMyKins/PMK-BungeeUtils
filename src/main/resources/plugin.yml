@@ -24,11 +24,11 @@ commands:
     description: commande de retour au lobby
     
   rules:
-    description: commande d'affichage des règles
+    description: commande d affichage des regles
   
   aide:
-    description: commande d'affichage des aides
+    description: commande d affichage des aides
   
   coins:
-    description: Commande d'affichage du nombre de coins
+    description: Commande d affichage du nombre de coins
     
