@@ -53,7 +53,7 @@ public class CoinsManager {
 	
 	public void initPlayer(ProxiedPlayer p) {
 		
-		
+		sql.sendUpdate("INSERT INTO coins(uuid) VALUES (" + p.getUniqueId().toString() + ")");
 		
 	}
 	
