@@ -15,20 +15,25 @@ public class CoinsManager {
 		// TODO Auto-generated method stub
 		m = mainBungeeUtils;
 		
-		registerCommands();
-		registerMessagingPluginEvent();
+		CoinsManager cm = new CoinsManager(sql);
+		
+		registerCommands(cm);
+		registerMessagingPluginEvent(cm);
 		
 		return new CoinsManager(sql);
 	}
 	
-	private static void registerCommands() {
+	private static void registerCommands(CoinsManager cm) {
 		
 		
 		
 	}
 	
-	private static void registerMessagingPluginEvent() {
-		m.getProxy().getPluginManager().registerListener(m, new CoinsMessagingService());
+	private static void registerMessagingPluginEvent(CoinsManager cm) {
+		
+		m.getProxy().getPluginManager().registerListener(m, new CoinsMessagingService(cm));
+		m.getProxy().getPluginManager().registerListener(m, new CoinsListener(cm));
+		
 	}
 
 	public static MainBungeeUtils getMainInstance() {
