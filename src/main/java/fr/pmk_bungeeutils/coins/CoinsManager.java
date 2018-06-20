@@ -92,7 +92,7 @@ public class CoinsManager {
 	
 	public void setPlayerCoins(ProxiedPlayer p, int c) {
 		
-		
+		sql.sendUpdate("UPDATE coins SET coin="+ c +" WHERE uuid=" + p.getUniqueId().toString());
 		
 	}
 
