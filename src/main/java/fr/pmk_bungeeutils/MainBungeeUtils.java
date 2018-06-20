@@ -1,5 +1,8 @@
 package fr.pmk_bungeeutils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.pmk_bungeeutils.autobroadcast.AutoBroadcastManager;
 import fr.pmk_bungeeutils.blockmod.BlockModCommand;
 import fr.pmk_bungeeutils.blockmod.BlockModListener;
@@ -30,6 +33,7 @@ public class MainBungeeUtils extends Plugin{
 	private static MainBungeeUtils instance;
 	private static MisterPorg misterPorg;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onEnable() {
 		// TODO Auto-generated method stub
@@ -64,6 +68,13 @@ public class MainBungeeUtils extends Plugin{
 	    String mdp = configUtils.getBddMdp();
 	    String base = configUtils.getBddBase();
 	    
+	    //initialisation de la class MySQLConnector
+	    MySQLConnector.init(url, user, mdp, base);
+		
+		CoinsManager coinsManager = CoinsManager.init(this);	
+	    
+		SessionLoggerUtils.registerCommands();
+		
 	    String server = "lobby";
 	    String message = "default";
 		try {
@@ -78,22 +89,33 @@ public class MainBungeeUtils extends Plugin{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	        
-	    //initialisation de la class MySQLConnector
-	    MySQLConnector.init(url, user, mdp, base);
-		
-		CoinsManager coinsManager = CoinsManager.init(this);		
-		
-		SessionLoggerUtils.registerCommands();
-		
-		//commande /aide
-		getProxy().getPluginManager().registerCommand(this, new Aide("aide"));
 		
 		//commande /lobby
 		getProxy().getPluginManager().registerCommand(this, new Lobby("lobby",message,server));
 		
+		List<String> aide = new ArrayList<>();
+		
+		try {
+			aide = (List<String>) MainBungeeUtils.getConfigUtils().getConfiguration("aide.yml").getList("aide");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//commande /aide
+		getProxy().getPluginManager().registerCommand(this, new Aide("aide",aide));
+		
+		List<String> rule = new ArrayList<>();	
+		
+		try {
+			rule = (List<String>) MainBungeeUtils.getConfigUtils().getConfiguration("rules.yml").getList("rules");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		//commande /rules
-		getProxy().getPluginManager().registerCommand(this, new Rules("rules"));
+		getProxy().getPluginManager().registerCommand(this, new Rules("rules",rule));
 		
 		//init listener
 		getProxy().getPluginManager().registerListener(this, new PlayerListener());
