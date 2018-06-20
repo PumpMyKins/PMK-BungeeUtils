@@ -14,17 +14,16 @@ public class MySQLConnector {
 	private static int port;
 	private static String user,mdp,base;
 	
-	public static MySQLConnector init(String url, String user, String mdp, String base) {
+	public static void init(String url, String user, String mdp, String base) {
 		MySQLConnector.setUrl(url);
 		MySQLConnector.setUser(user);
 		MySQLConnector.setMdp(mdp);
 		MySQLConnector.setPort(3306);
 		MySQLConnector.setBase(base);
 		
-		return new MySQLConnector();
 	}
 	
-	private MySQLConnector() {
+	public MySQLConnector() {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			Connection connection = DriverManager.getConnection("jdbc:mariadb://"+ url  + ":" + port + "/" + base + "?user=" + user + "&password=" + mdp);	//init connector
