@@ -12,7 +12,7 @@ public class DiscordEvent implements EventListener{
 		// TODO Auto-generated method stub
 		
 		if(e instanceof MessageReceivedEvent) {
-			
+			// récupération event message receive
 			onMessageReceivedEvent((MessageReceivedEvent) e);
 			
 		}else {
@@ -26,16 +26,16 @@ public class DiscordEvent implements EventListener{
 	private void onMessageReceivedEvent(MessageReceivedEvent e) {
 		// TODO Auto-generated method stub
 		
-		if(e.getAuthor().isBot())
+		if(e.getAuthor().isBot())	// return if bot
 			return;
 		
 		if(e.getChannel().getId().equals(SessionLoggerManager.channelID)) {
 			// session logger canal
 			new SessionLoggerManager().onDiscordReceivedLogger(e);			
 			
-		}else if(e.getChannel().getId().equals("")){
+		}else if(e.getChannel().getId().equals("446357382977814538")){
 			// général bot canal
-			
+			System.out.println("Message received in general bot channel");
 			
 		}else {
 			//nothing
