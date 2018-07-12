@@ -1,12 +1,16 @@
 package fr.pmk_bungeeutils.security;
 
+import java.util.Collection;
+
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 public class SessionLoggerManager {
 	
-	public final static String channelID = "453229576269725726";
+	public static String channelID = "453229576269725726";
 	
 	public void onDiscordReceivedLogger(MessageReceivedEvent e) {
 		// TODO Auto-generated method stub
@@ -95,23 +99,65 @@ public class SessionLoggerManager {
 			
 		}else {
 			
-			/*if(linkMap.containsKey(e.getAuthor().getId())) {
-				// requête déjà en cours
+			String playerName = args[1];
+			
+			Collection<ProxiedPlayer> cPlayer = ProxyServer.getInstance().matchPlayer(playerName);
+			
+			if(cPlayer.isEmpty()) {
 				
 				e.getMessage().delete().queue();
-				
+				// pas valide ou non connecté
 				e.getChannel().sendMessage(new MessageBuilder().append(e.getAuthor())
-				.append(" Vous avez déjà générer un token de liaison pour votre compte discord, merci de patienter !")
-				.build())
-				.queue();
+						.append(" Paramètre de commande invalide, aucun joueur trouvé !")
+						.build())
+						.queue();
+				
+			}else if(cPlayer.size() == 1) {
+				
+				ProxiedPlayer p = (ProxiedPlayer) cPlayer.toArray()[0];
+				
+				if(SessionLoggerUtils.getLinkMap().containsKey(p.getUniqueId().toString())) {
+					
+					e.getMessage().delete().queue();
+					// déjà une requète en cours
+					e.getChannel().sendMessage(new MessageBuilder().append(e.getAuthor())
+							.append(" Une reqète de liaison pour ce joueur est déjà en attente !")
+							.build())
+							.queue();
+					
+				}else {
+					
+					// player trouvé
+					e.getMessage().delete().queue();
+					// pas valide ou non connecté
+					e.getChannel().sendMessage(new MessageBuilder().append(e.getAuthor())
+							.append(" Envoie de la demande de confirmation en jeu ! Vous disposez de 30 secondes pour y répondre")
+							.build())
+							.queue();
+					
+					// envoie de la demande en jeu
+					
+					
+					SessionLoggerUtils.inGameLink(p,e.getAuthor());
+					
+				}
 				
 			}else {
 				
-				// récupération du token
+				String playerList = "";
 				
+				for (ProxiedPlayer proxiedPlayer : cPlayer) {
+					playerList += " - " + proxiedPlayer.getName() + " \n ";
+				}
 				
+				e.getMessage().delete().queue();
+				// pas valide ou non connecté
+				e.getChannel().sendMessage(new MessageBuilder().append(e.getAuthor())
+						.append(" Plusieurs joueurs trouvés : \n " + playerList)
+						.build())
+						.queue();
 				
-			}*/
+			}
 			
 		}
 		

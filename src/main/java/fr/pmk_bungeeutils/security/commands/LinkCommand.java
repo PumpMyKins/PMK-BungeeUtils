@@ -1,13 +1,10 @@
 package fr.pmk_bungeeutils.security.commands;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
 
 import fr.pmk_bungeeutils.security.LinkSessionData;
 import fr.pmk_bungeeutils.security.SessionLoggerUtils;
 import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
@@ -18,6 +15,7 @@ public class LinkCommand extends Command {
 		// TODO Auto-generated constructor stub
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		// TODO Auto-generated method stub
@@ -26,38 +24,44 @@ public class LinkCommand extends Command {
 			return;
 		
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-			
-		HashMap<String, LinkSessionData> h = SessionLoggerUtils.getLinkMap();
-		List<String> l = SessionLoggerUtils.getUserLinkList();
 		
-		if(l.contains(p.getUniqueId().toString())) {
-			// demande déjà en cours
+		if(args.length == 1) {
 			
-			p.sendMessage(new TextComponent("§d§l[Discord]§r§c Vous avez déjà une requête de liaison en cours, merci de patienter !"));
+			String uuid = args[0];
 			
-			return;
+			HashMap<String, LinkSessionData> h = SessionLoggerUtils.getLinkMap();
 			
-		}else {
-			// génération de la demande
-			
-			String token = UUID.randomUUID().toString();
-			
-			while (h.containsKey(token)) {
+			if(h.containsKey(p.getUniqueId().toString())) {
 				
-				token = UUID.randomUUID().toString();
+				LinkSessionData d = h.get(p.getUniqueId().toString());
+				
+				String r = d.getRefuse_UUID().toString();
+				String a = d.getAccept_UUID().toString();
+				
+				if(uuid.equals(r)) {
+					// refus
+					p.sendMessage("§9[PumpMyStaff]§c Requête non valide !");
+					
+				}else if(uuid.equals(a)){
+					// accept
+					p.sendMessage("§9[PumpMyStaff]§c Requête non valide !");
+					
+				}else {
+					// invalide
+					p.sendMessage("§9[PumpMyStaff]§c Requête non valide !");
+					
+				}
+				
+			}else {
+				
+				// pas de demande
+				p.sendMessage("§9[PumpMyStaff]§c Requête non valide !");
 				
 			}
 			
-			// ajout des infos
-			l.add(p.getUniqueId().toString());			
-			h.put(token, new LinkSessionData(p));
 			
-			p.sendMessage(new TextComponent("§d§l[Discord]§r§a Entrez \"!link " + token + "\" dans le canal prevu à cette effet !"));
-			
-			// lancement du scheduler de suppression du token
-			
-			
-			
+		}else {
+			return;
 		}
 		
 	}

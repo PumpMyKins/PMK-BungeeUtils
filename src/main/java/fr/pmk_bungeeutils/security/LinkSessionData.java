@@ -1,34 +1,56 @@
 package fr.pmk_bungeeutils.security;
 
-import net.md_5.bungee.api.connection.ProxiedPlayer;
+import java.util.UUID;
+
+import net.dv8tion.jda.core.entities.User;
 
 public class LinkSessionData {
 
-	private ProxiedPlayer player;
-	private String uuid;
+	private boolean used;
 	
-	public LinkSessionData(ProxiedPlayer p) {
+	private UUID accept_UUID;
+	private UUID refuse_UUID;
+
+	private User user;	
+	
+	public LinkSessionData(User u) {
 		
-		this.player = p;
-		this.uuid = p.getUniqueId().toString();
+		this.used = false;
+		this.user = u;
 		
+		generateUUID();
+		
+	}
+	
+	private void generateUUID() {
+		
+		this.accept_UUID = UUID.randomUUID();
+		this.refuse_UUID = UUID.randomUUID();
 		
 	}
 
-	public ProxiedPlayer getPlayer() {
-		return player;
+	public boolean isUsed() {
+		return used;
 	}
 
-	public void setPlayer(ProxiedPlayer player) {
-		this.player = player;
+	public void setUsed(boolean used) {
+		this.used = used;
 	}
 
-	public String getUuid() {
-		return uuid;
+	public UUID getAccept_UUID() {
+		return accept_UUID;
 	}
 
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
+	public UUID getRefuse_UUID() {
+		return refuse_UUID;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }
