@@ -40,11 +40,11 @@ public class LinkCommand extends Command {
 				
 				if(uuid.equals(r)) {
 					// refus
-					p.sendMessage("§9[PumpMyStaff]§c Requête non valide !");
+					p.sendMessage("§9[PumpMyStaff] refus");
 					
 				}else if(uuid.equals(a)){
 					// accept
-					p.sendMessage("§9[PumpMyStaff]§c Requête non valide !");
+					p.sendMessage("§9[PumpMyStaff] accept");
 					
 				}else {
 					// invalide
@@ -55,7 +55,7 @@ public class LinkCommand extends Command {
 			}else {
 				
 				// pas de demande
-				p.sendMessage("§9[PumpMyStaff]§c Requête non valide !");
+				p.sendMessage("§9[PumpMyStaff] pas de demande");
 				
 			}
 			
