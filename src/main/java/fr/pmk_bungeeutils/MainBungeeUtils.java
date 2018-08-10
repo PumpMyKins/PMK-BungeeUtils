@@ -53,13 +53,13 @@ public class MainBungeeUtils extends Plugin{
 		System.out.println("Mister Porg init");
 		String token = configUtils.getBotToken();
 		
-		/*if(!token.equals("no-token")) {
+		if(!token.equals("no-token")) {
 			System.out.println("Mister Porg token found");
 			misterPorg = new MisterPorg();
 			
-			misterPorg.start(token);
+			//misterPorg.start(token);
 			
-		}*/
+		}
 		
 		BlockModManager.init(configUtils);
 		
@@ -143,9 +143,6 @@ public class MainBungeeUtils extends Plugin{
 		new AutoBroadcastManager().startScheduler();
 		
 		new BuyCraftScheduler().start();
-		
-	
-		
 				
 		
 	}
@@ -174,7 +171,6 @@ public class MainBungeeUtils extends Plugin{
 		return instance;
 	}
 
-	@SuppressWarnings("deprecation")
 	public static void updatePlayer() {
 		// TODO Auto-generated method stub
 		if(BlockModManager.isActive()) {
@@ -182,7 +178,7 @@ public class MainBungeeUtils extends Plugin{
 			for(ProxiedPlayer p: instance.getProxy().getPlayers()){
 	        	
 	            if(!p.hasPermission(BlockModManager.getOverPerm())) {
-	            	p.disconnect("§4§l[§r§6PUMPMYCORD§r§4§l]§c Le serveur est maintenant indisponible ! (" + BlockModManager.getRaison() + ")");
+	            	p.disconnect(new TextComponent("§4§l[§r§6PUMPMYCORD§r§4§l]§c Le serveur est maintenant indisponible ! (" + BlockModManager.getRaison() + ")"));
 	            }
 	            
 	        }

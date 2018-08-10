@@ -31,11 +31,10 @@ public class SessionLoggerUtils {
 		
 	}
 	
-	@SuppressWarnings("deprecation")
 	public static void inGameLink(ProxiedPlayer p , User u) {
 		// TODO Auto-generated method stub
 		
-		p.sendMessage("§9[PumpMyStaff] Liaison discord §a" + u.getName() + "#" + u.getDiscriminator());
+		p.sendMessage(new TextComponent("§9[PumpMyStaff] Liaison discord §a" + u.getName() + "#" + u.getDiscriminator()));
 		
 		LinkSessionData l = new LinkSessionData(u);
 		

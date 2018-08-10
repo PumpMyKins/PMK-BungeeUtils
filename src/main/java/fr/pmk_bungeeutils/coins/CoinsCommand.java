@@ -3,6 +3,7 @@ package fr.pmk_bungeeutils.coins;
 import java.sql.SQLException;
 
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
@@ -16,7 +17,6 @@ public class CoinsCommand extends Command {
 		// TODO Auto-generated constructor stub
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		// TODO Auto-generated method stub
@@ -28,19 +28,19 @@ public class CoinsCommand extends Command {
 			try {
 				
 				int coins = cm.getPlayerCoins(p);
-				p.sendMessage("§a§l[ PumpMyCoins ]§r§2 Vous avez §b" + coins + "§2 coins !");	
+				p.sendMessage(new TextComponent("§a§l[ PumpMyCoins ]§r§2 Vous avez §b" + coins + "§2 coins !"));	
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				
 				e.printStackTrace();
-				p.sendMessage("§a§l[ PumpMyCoins ]§r§c Erreur de récupération des coins, contactez le staff !");
+				p.sendMessage(new TextComponent("§a§l[ PumpMyCoins ]§r§c Erreur de récupération des coins, contactez le staff !"));
 				
 			}
 			
 		}else {
 			
-			sender.sendMessage("§a§l[ PumpMyCoins ]§r§cImpossible ici !");
+			sender.sendMessage(new TextComponent("§a§l[ PumpMyCoins ]§r§cImpossible ici !"));
 			return;
 			
 		}

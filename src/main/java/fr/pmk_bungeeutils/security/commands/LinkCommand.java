@@ -5,6 +5,7 @@ import java.util.HashMap;
 import fr.pmk_bungeeutils.security.LinkSessionData;
 import fr.pmk_bungeeutils.security.SessionLoggerUtils;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
@@ -15,7 +16,6 @@ public class LinkCommand extends Command {
 		// TODO Auto-generated constructor stub
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		// TODO Auto-generated method stub
@@ -40,22 +40,22 @@ public class LinkCommand extends Command {
 				
 				if(uuid.equals(r)) {
 					// refus
-					p.sendMessage("§9[PumpMyStaff] refus");
+					p.sendMessage(new TextComponent("§9[PumpMyStaff] refus"));
 					
 				}else if(uuid.equals(a)){
 					// accept
-					p.sendMessage("§9[PumpMyStaff] accept");
+					p.sendMessage(new TextComponent("§9[PumpMyStaff] accept"));
 					
 				}else {
 					// invalide
-					p.sendMessage("§9[PumpMyStaff]§c Requête non valide !");
+					p.sendMessage(new TextComponent("§9[PumpMyStaff]§c Requête non valide !"));
 					
 				}
 				
 			}else {
 				
 				// pas de demande
-				p.sendMessage("§9[PumpMyStaff] pas de demande");
+				p.sendMessage(new TextComponent("§9[PumpMyStaff] pas de demande"));
 				
 			}
 			

@@ -2,6 +2,7 @@ package fr.pmk_bungeeutils.blockmod;
 
 import fr.pmk_bungeeutils.MainBungeeUtils;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
@@ -12,7 +13,6 @@ public class BlockModCommand extends Command {
 		// TODO Auto-generated constructor stub
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		
@@ -21,17 +21,17 @@ public class BlockModCommand extends Command {
 			ProxiedPlayer p = (ProxiedPlayer)sender;
 			
 			if(!p.hasPermission("blockmod.set")) {
-				p.sendMessage("§cPas la perm !");
+				p.sendMessage(new TextComponent("§cPas la perm !"));
 				return;
 			}
 			
-			p.sendMessage("§4======================");
-			p.sendMessage("§4[BLOCKMOD] option de la commande :");
-			p.sendMessage("§c-s true/false");
-			p.sendMessage("§c-r raison de blockage");
-			p.sendMessage("§c-p permissions d'overpass");
-			p.sendMessage("§c-u pour update les joueurs");
-			p.sendMessage("§4======================");
+			p.sendMessage(new TextComponent("§4======================"));
+			p.sendMessage(new TextComponent("§4[BLOCKMOD] option de la commande :"));
+			p.sendMessage(new TextComponent("§c-s true/false"));
+			p.sendMessage(new TextComponent("§c-r raison de blockage"));
+			p.sendMessage(new TextComponent("§c-p permissions d'overpass"));
+			p.sendMessage(new TextComponent("§c-u pour update les joueurs"));
+			p.sendMessage(new TextComponent("§4======================"));
 			
 			//if(!(args.length  <= 2)) {
 				
@@ -52,7 +52,7 @@ public class BlockModCommand extends Command {
 						return;
 						
 					}else {
-						p.sendMessage("§cMauvaise argument !");
+						p.sendMessage(new TextComponent("§cMauvaise argument !"));
 						return;
 					}
 					
@@ -79,21 +79,22 @@ public class BlockModCommand extends Command {
 					
 				}if (param.equalsIgnoreCase("-i")) {
 					
-					p.sendMessage("§cPerm " + BlockModManager.getOverPerm());
-					p.sendMessage("§4======================");
-					p.sendMessage("§cRaison " + BlockModManager.getRaison());
-					p.sendMessage("§4======================");
-					p.sendMessage("§cState " + BlockModManager.isActive());
+					p.sendMessage(new TextComponent("§cPerm " + BlockModManager.getOverPerm()));
+					p.sendMessage(new TextComponent("§4======================"));
+					p.sendMessage(new TextComponent("§cRaison " + BlockModManager.getRaison()));
+					p.sendMessage(new TextComponent("§4======================"));
+					p.sendMessage(new TextComponent("§cState " + BlockModManager.isActive()));
 					return;
 					
 				}else if (param.equalsIgnoreCase("-u")) {
 					
 					// update des joueurs
 					MainBungeeUtils.updatePlayer();
+					p.sendMessage(new TextComponent("§cUpdate des joueurs !"));
 					return;
 					
 				}else {
-					p.sendMessage("§cMauvaise argument !");
+					p.sendMessage(new TextComponent("§cMauvaise argument !"));
 					return;
 				}
 				

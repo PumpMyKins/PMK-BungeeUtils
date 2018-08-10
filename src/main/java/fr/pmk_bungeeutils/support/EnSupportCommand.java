@@ -3,6 +3,7 @@ package fr.pmk_bungeeutils.support;
 import java.util.HashMap;
 
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
@@ -15,7 +16,6 @@ public class EnSupportCommand extends Command {
 		// TODO Auto-generated constructor stub
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		
@@ -32,14 +32,14 @@ public class EnSupportCommand extends Command {
 					sD.setState(false);
 					// passage en false
 					supportMap.replace(p, sD);
-					p.sendMessage("Changement du mod de support, message non vissible");
+					p.sendMessage(new TextComponent("Changement du mod de support, message non vissible"));
 					
 				}else {
 					
 					sD.setState(true);
 					// passage en true
 					supportMap.replace(p, sD);
-					p.sendMessage("Changement du mod de support, message vissible");
+					p.sendMessage(new TextComponent("Changement du mod de support, message vissible"));
 				}
 				
 			}
