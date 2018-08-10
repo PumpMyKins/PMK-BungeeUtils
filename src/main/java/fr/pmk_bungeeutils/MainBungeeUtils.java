@@ -53,13 +53,13 @@ public class MainBungeeUtils extends Plugin{
 		System.out.println("Mister Porg init");
 		String token = configUtils.getBotToken();
 		
-		if(!token.equals("no-token")) {
+		/*if(!token.equals("no-token")) {
 			System.out.println("Mister Porg token found");
 			misterPorg = new MisterPorg();
 			
 			misterPorg.start(token);
 			
-		}
+		}*/
 		
 		BlockModManager.init(configUtils);
 		
@@ -74,7 +74,7 @@ public class MainBungeeUtils extends Plugin{
 		@SuppressWarnings("unused")
 		CoinsManager coinsManager = CoinsManager.init(this);	
 	    
-		SessionLoggerUtils.registerCommands();
+		//SessionLoggerUtils.registerCommands();
 		
 	    String server = "lobby";
 	    String message = "default";
