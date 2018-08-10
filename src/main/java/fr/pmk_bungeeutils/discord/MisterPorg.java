@@ -12,6 +12,8 @@ public class MisterPorg {
 	private static JDA jda;
 	private boolean isInit;
 	
+	public static final String GEN_CHAN_ID = "446357382977814538";
+	
 	public void start(String token) {
 		
 		if(token.isEmpty()) {
@@ -34,6 +36,8 @@ public class MisterPorg {
 		}
 		
 	}
+	
+	
 
 	public static JDA getJda() {
 		return jda;

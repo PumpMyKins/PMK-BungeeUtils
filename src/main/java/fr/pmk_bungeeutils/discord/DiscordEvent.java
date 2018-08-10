@@ -17,7 +17,7 @@ public class DiscordEvent implements EventListener{
 			
 		}else {
 			
-			
+			// nothing
 			
 		}
 		
@@ -33,7 +33,7 @@ public class DiscordEvent implements EventListener{
 			// session logger canal
 			new SessionLoggerManager().onDiscordReceivedLogger(e);			
 			
-		}else if(e.getChannel().getId().equals("446357382977814538")){
+		}else if(e.getChannel().getId().equals(MisterPorg.GEN_CHAN_ID)){
 			// général bot canal
 			System.out.println("Message received in general bot channel");
 			
