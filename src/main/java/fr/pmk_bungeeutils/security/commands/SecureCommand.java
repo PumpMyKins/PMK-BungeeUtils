@@ -17,7 +17,89 @@ public class SecureCommand extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		// TODO Auto-generated method stub
-		
+		if ((sender instanceof ProxiedPlayer)) {
+			
+			ProxiedPlayer p = (ProxiedPlayer)sender;
+			
+			if(!p.hasPermission("secure.use")) {
+				p.sendMessage(new TextComponent("§cPas la permission de faire cela !"));
+				return;
+			}
+			
+			p.sendMessage(new TextComponent("§4======================"));
+			p.sendMessage(new TextComponent("§4[BLOCKMOD] option de la commande :"));
+			p.sendMessage(new TextComponent("§c-s true/false"));
+			p.sendMessage(new TextComponent("§c-r raison de blockage"));
+			p.sendMessage(new TextComponent("§c-p permissions d'overpass"));
+			p.sendMessage(new TextComponent("§c-u pour update les joueurs"));
+			p.sendMessage(new TextComponent("§4======================"));
+			
+			//if(!(args.length  <= 2)) {
+				
+				String param = args[0];
+				
+				if(param.equalsIgnoreCase("-s")) {
+					
+					String state = args[1];
+					
+					if(state.equalsIgnoreCase("true")) {
+						
+						BlockModManager.setActive(true);
+						return;
+						
+					}else if (state.equalsIgnoreCase("false")) {
+						
+						BlockModManager.setActive(false);
+						return;
+						
+					}else {
+						p.sendMessage(new TextComponent("§cMauvaise argument !"));
+						return;
+					}
+					
+				}else if (param.equalsIgnoreCase("-p")) {
+					
+					String perm = args[1];
+					//System.out.println("p : " + perm);
+					
+					BlockModManager.setOverPerm(perm);
+					return;
+					
+				}else if (param.equalsIgnoreCase("-r")) {
+					
+					String raison = "";
+					
+					for (int i = 1; i < args.length; i++) {
+						raison += args[i] + " ";
+					}
+					
+					//System.out.println("r : " + raison);
+					
+					BlockModManager.setRaison(raison);
+					return;
+					
+				}if (param.equalsIgnoreCase("-i")) {
+					
+					p.sendMessage(new TextComponent("§cPerm " + BlockModManager.getOverPerm()));
+					p.sendMessage(new TextComponent("§4======================"));
+					p.sendMessage(new TextComponent("§cRaison " + BlockModManager.getRaison()));
+					p.sendMessage(new TextComponent("§4======================"));
+					p.sendMessage(new TextComponent("§cState " + BlockModManager.isActive()));
+					return;
+					
+				}else if (param.equalsIgnoreCase("-u")) {
+					
+					// update des joueurs
+					MainBungeeUtils.updatePlayer();
+					return;
+					
+				}else {
+					p.sendMessage(new TextComponent("§cMauvaise argument !"));
+					return;
+				}
+				
+			}
+			return;
 	}
 
 }
