@@ -25,7 +25,7 @@ public class SupportCommand extends Command {
 			String msg = "";
 			
 			if(args.length <= 4) {
-				p.sendMessage(new TextComponent("§c Votre message au support doit contenir plus de 4 mots !"));
+				p.sendMessage(new TextComponent("§9[SUPPORT]§c Votre message au support doit contenir plus de 4 mots !"));
 				return;
 			}
 			
@@ -35,12 +35,13 @@ public class SupportCommand extends Command {
 			
 			HashMap<ProxiedPlayer, SupportData> h = EnSupportCommand.getSupportMap();
 			
-			p.sendMessage(new TextComponent("§9[SUPPORT]§7§l<§r§1" + p.getDisplayName() + "§7§l>§r Votre message à bien été envoyé au support. Il y a actuellement " + h.size() + " personnes connectées pour répondre à votre demande !"));
+			p.sendMessage(new TextComponent("§9[SUPPORT]§7§l<§r§1" + p.getDisplayName() + "§7§l>§r Votre message à bien été envoyé au support."));
+			p.sendMessage(new TextComponent("§9[SUPPORT]§r Il y a actuellement " + h.size() + " personnes connectées pour répondre à votre demande !"));
 			
 			for (Entry<ProxiedPlayer, SupportData> e : h.entrySet()) {
 				
 				if(e.getValue().getState()) {
-						e.getKey().sendMessage(new TextComponent("§9[SUPPORT]§7§l<§r§1" + p.getDisplayName() + "§7§l>§r " + msg));
+						e.getKey().sendMessage(new TextComponent("§9[ " + e.getKey().getServer().getInfo().getName() + " ]§7§l<§r§1" + p.getDisplayName() + "§7§l>§r " + msg));
 				}
 				
 			}
