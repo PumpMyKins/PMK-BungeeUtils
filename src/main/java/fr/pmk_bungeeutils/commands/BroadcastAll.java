@@ -20,7 +20,7 @@ public class BroadcastAll extends Command {
 			
 			if(player.hasPermission("bcall.use")) {
 				if(args.length == 0) {
-					player.sendMessage(new TextComponent("�cEssayez /bcall <message>"));
+					player.sendMessage(new TextComponent("§cEssayez /bcall <message>"));
 				}
 				if(args.length >= 1) {
 					StringBuilder bc = new StringBuilder();
@@ -28,10 +28,10 @@ public class BroadcastAll extends Command {
 						bc.append(port + " ");
 					}
 					
-					ProxyServer.getInstance().broadcast(new TextComponent("�9[Broadcast] " + bc.toString()));
+					ProxyServer.getInstance().broadcast(new TextComponent("§6§l[§r§2Pump§eMy§aKins§r§6§l]§r " + bc.toString()));
 				}
 			}else {
-				player.sendMessage(new TextComponent("�cVous n'avez pas la permission !"));
+				player.sendMessage(new TextComponent("§cVous n'avez pas la permission !"));
 			}
 		}
 
