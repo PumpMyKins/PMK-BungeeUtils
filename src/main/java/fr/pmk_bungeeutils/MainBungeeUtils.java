@@ -11,6 +11,7 @@ import fr.pmk_bungeeutils.coins.CoinsManager;
 import fr.pmk_bungeeutils.commands.Aide;
 import fr.pmk_bungeeutils.commands.BroadcastAll;
 import fr.pmk_bungeeutils.commands.Lobby;
+import fr.pmk_bungeeutils.commands.MessageServer;
 import fr.pmk_bungeeutils.commands.Rules;
 import fr.pmk_bungeeutils.config.ConfigPlayerSaveScheduler;
 import fr.pmk_bungeeutils.config.ConfigUtils;
@@ -125,6 +126,9 @@ public class MainBungeeUtils extends Plugin{
 		
 		//commande /bcall <message>
 		getProxy().getPluginManager().registerCommand(this, new BroadcastAll("bcall"));
+		
+		//commande /msg <joueur> <message>
+		getProxy().getPluginManager().registerCommand(this, new MessageServer("msg"));
 		
 		//init listener
 		getProxy().getPluginManager().registerListener(this, new PlayerListener());
