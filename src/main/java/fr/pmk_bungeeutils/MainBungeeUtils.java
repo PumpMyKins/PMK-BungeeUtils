@@ -79,6 +79,8 @@ public class MainBungeeUtils extends Plugin{
 		
 		//////////////////// HOTBARCONNECT v3 ///////////////////////////////////////
 		
+		
+		
 		////////////////////INIT BDD CONNECTOR ///////////////////////////////////////
 		
 		String url = configUtils.getBddUrl();
@@ -225,6 +227,10 @@ public class MainBungeeUtils extends Plugin{
 
 	public static void setMisterPorg(MisterPorg misterPorg) {
 		MainBungeeUtils.misterPorg = misterPorg;
+	}
+
+	public static PluginMessagingManager getMessagingManager() {
+		return plg;
 	}
 	
 }
