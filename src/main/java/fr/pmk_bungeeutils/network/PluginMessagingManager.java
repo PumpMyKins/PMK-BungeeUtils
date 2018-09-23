@@ -29,6 +29,24 @@ public class PluginMessagingManager implements Listener {
 		
 	}
 	
+///////////////////////////////////////////////////////////////////////////////////////////
+	
+	private HashMap<String, MessagingListener> hashListener;
+
+	public void addMessage(String tag , MessagingListener ml) {
+		
+		main.getProxy().registerChannel(tag);
+		hashListener.put(tag, ml);
+		
+	}
+	
+	public void removeMessage(String tag) {
+		
+		main.getProxy().unregisterChannel(tag);
+		hashListener.remove(tag);
+		
+	}
+	
 	public PluginMessagingManager(MainBungeeUtils m) {
 		// TODO Auto-generated constructor stub
 		
