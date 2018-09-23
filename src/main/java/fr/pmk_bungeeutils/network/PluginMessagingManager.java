@@ -1,7 +1,12 @@
 package fr.pmk_bungeeutils.network;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 import fr.pmk_bungeeutils.MainBungeeUtils;
+import net.md_5.bungee.api.event.PluginMessageEvent;
 import net.md_5.bungee.api.plugin.Listener;
+import net.md_5.bungee.event.EventHandler;
 
 public class PluginMessagingManager implements Listener {
 
@@ -10,7 +15,7 @@ public class PluginMessagingManager implements Listener {
 
 	public static PluginMessagingManager init(MainBungeeUtils m) {
 		
-		plgM = new PluginMessagingManager(m);		
+		plgM = new PluginMessagingManager(m);
 		
 		startListen();
 		
@@ -49,6 +54,24 @@ public class PluginMessagingManager implements Listener {
 	
 	public PluginMessagingManager(MainBungeeUtils m) {
 		// TODO Auto-generated constructor stub
+		this.hashListener = new HashMap<>();
+	}
+	
+	@EventHandler
+	public void onPluginMessage(PluginMessageEvent event) {
+		
+		for (Entry<String, MessagingListener> entry : hashListener.entrySet()) {
+			
+			String tag = entry.getKey();
+			
+			if(event.getTag().equals(tag)) {
+				
+				entry.getValue().onMessagingTagReceive(event);
+				return;
+				
+			}
+			
+		}
 		
 	}
 	
