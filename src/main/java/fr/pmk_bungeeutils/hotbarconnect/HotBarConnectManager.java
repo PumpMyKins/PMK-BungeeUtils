@@ -16,5 +16,16 @@ public class HotBarConnectManager {
 		HotBarConnectManager.hashServer = hashServer;
 	}
 	
+	public static void addServer(String s , HbcServer hbc) {
+		
+		if(hashServer.containsKey(s)) {
+			System.out.println("Serveur déjà existant !");
+			return;
+		}
+		
+		hashServer.put(s, hbc);
+		
+	}
+		
 	
 }
