@@ -25,7 +25,12 @@ public class HotBarConnectManager {
 		
 		hashServer.put(s, hbc);
 		
-	}
+	}		
+	
+	public static void init() {
 		
+		
+		
+	}
 	
 }
