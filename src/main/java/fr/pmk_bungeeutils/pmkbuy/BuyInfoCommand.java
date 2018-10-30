@@ -19,7 +19,7 @@ public class BuyInfoCommand extends Command {
 		String username = args[0];
 		String montant = args[1] + args[2];
 		
-		if(Integer.valueOf(args[1]).intValue() < 1) {
+		if(Integer.valueOf(args[1]).intValue() > 1) {
 			
 			System.out.println("§l§2[ §aBoutique §2] §r§dMerci à §r§l§n§c#" + username + "# §r§dpour son soutien au serveur de §r§l§n§c#" + montant + "# §r§d!!!");
 			
