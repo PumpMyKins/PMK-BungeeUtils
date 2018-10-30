@@ -19,12 +19,15 @@ public class BuyInfoCommand extends Command {
 		String username = args[0];
 		String montant = args[1] + args[2];
 		
-		System.out.println("§l§2[ §aBoutique §2] §r§dMerci à §r§l§n§c#" + username + "# §r§dpour son soutien au serveur de §r§l§n§c#" + montant + "# §r§d!!!");
+		if(Integer.valueOf(args[1]).intValue() < 1) {
+			
+			System.out.println("§l§2[ §aBoutique §2] §r§dMerci à §r§l§n§c#" + username + "# §r§dpour son soutien au serveur de §r§l§n§c#" + montant + "# §r§d!!!");
+			
+			for(ProxiedPlayer p: MainBungeeUtils.getInstance().getProxy().getPlayers()){
+				
+				p.sendMessage(new TextComponent("§l§2[ §aBoutique §2] §r§dMerci à §r§l§n§c#" + username + "# §r§dpour son soutien au serveur de §r§l§n§c#" + montant + "# §r§d!!!"));
 		
-		for(ProxiedPlayer p: MainBungeeUtils.getInstance().getProxy().getPlayers()){
-			
-			p.sendMessage(new TextComponent("§l§2[ §aBoutique §2] §r§dMerci à §r§l§n§c#" + username + "# §r§dpour son soutien au serveur de §r§l§n§c#" + montant + "# §r§d!!!"));
-			
+			}
 		}
 
 	}
