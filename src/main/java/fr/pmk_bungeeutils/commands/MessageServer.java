@@ -26,18 +26,18 @@ public class MessageServer extends Command {
 			}else {
 				
 				String msg = new String();
-				for(int i = 2; i<= args.length - 1; i++) {
+				for(int i = 1; i<= args.length - 1; i++) {
 					
 					msg = msg + args[i];
 				}
 				
 				try {
 					player.sendMessage(new TextComponent("§7[Toi->"
-					+ProxyServer.getInstance().getPlayer(args[1]).getName()
+					+ProxyServer.getInstance().getPlayer(args[0]).getName()
 					+"§7] "
 					+msg));
 					
-					ProxyServer.getInstance().getPlayer(args[1]).sendMessage(new TextComponent("§7["
+					ProxyServer.getInstance().getPlayer(args[0]).sendMessage(new TextComponent("§7["
 					+player.getName()
 					+"§7->Toi] "
 					+msg));
