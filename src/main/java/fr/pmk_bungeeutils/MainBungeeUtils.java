@@ -18,6 +18,7 @@ import fr.pmk_bungeeutils.config.ConfigUtils;
 import fr.pmk_bungeeutils.config.MySQLConnector;
 import fr.pmk_bungeeutils.discord.MisterPorg;
 import fr.pmk_bungeeutils.listener.PlayerListener;
+import fr.pmk_bungeeutils.network.PluginMessagingManager;
 import fr.pmk_bungeeutils.pmkbuy.BuyInfoCommand;
 import fr.pmk_bungeeutils.scheduler.BuyCraftScheduler;
 import fr.pmk_bungeeutils.security.SessionLoggerUtils;
@@ -35,12 +36,16 @@ public class MainBungeeUtils extends Plugin{
 	private static MainBungeeUtils instance;
 	private static MisterPorg misterPorg;
 	
+	private static PluginMessagingManager plg;
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onEnable() {
 		// TODO Auto-generated method stub
 		
 		instance = this;
+		
+		//////////////////////// CONFIG /////////////////////////////////////////
 		
 		configUtils = ConfigUtils.getConfig(this);
 		
@@ -51,6 +56,8 @@ public class MainBungeeUtils extends Plugin{
 		configUtils.initAndGetFile("aide.yml");
 		
 		configUtils.initPlayerLogin();
+		
+		//////////////////// BOT DISCORD ///////////////////////////////////////
 		
 		System.out.println("Mister Porg init");
 		String token = configUtils.getBotToken();
@@ -63,7 +70,19 @@ public class MainBungeeUtils extends Plugin{
 			
 		}
 		
+		//////////////////// BLOCKMOD ///////////////////////////////////////
+		
 		BlockModManager.init(configUtils);
+		
+		//////////////////// PLUGIN MESSAGING MANAGER ////////////////////////////////
+		
+		plg = PluginMessagingManager.init(this);
+		
+		//////////////////// HOTBARCONNECT v3 ///////////////////////////////////////
+		
+		
+		
+		////////////////////INIT BDD CONNECTOR ///////////////////////////////////////
 		
 		String url = configUtils.getBddUrl();
 	    String user = configUtils.getBddUser();
@@ -73,6 +92,7 @@ public class MainBungeeUtils extends Plugin{
 	    //initialisation de la class MySQLConnector
 	    MySQLConnector.init(url, user, mdp, base);
 		
+	    // init coins manager
 		@SuppressWarnings("unused")
 		CoinsManager coinsManager = CoinsManager.init(this);	
 	    
@@ -211,6 +231,10 @@ public class MainBungeeUtils extends Plugin{
 
 	public static void setMisterPorg(MisterPorg misterPorg) {
 		MainBungeeUtils.misterPorg = misterPorg;
+	}
+
+	public static PluginMessagingManager getMessagingManager() {
+		return plg;
 	}
 	
 }

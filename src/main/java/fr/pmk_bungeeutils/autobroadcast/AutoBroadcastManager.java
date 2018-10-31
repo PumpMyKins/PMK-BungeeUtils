@@ -23,7 +23,7 @@ public class AutoBroadcastManager {
 		url.setColor(ChatColor.RED);
 		url.setClickEvent(new ClickEvent(Action.OPEN_URL, "https://discord.gg/VedSyV7"));
 		
-		TextComponent t = new TextComponent("[Discord] Tenez vous au courant des actualités en rejoignant le ");
+		TextComponent t = new TextComponent("[Discord] Tenez vous au courant des actualitÃ©s en rejoignant le ");
 		t.setColor(ChatColor.LIGHT_PURPLE);
 		
 		t.addExtra(url);
@@ -67,7 +67,7 @@ public class AutoBroadcastManager {
 		url.setColor(ChatColor.RED);
 		url.setClickEvent(new ClickEvent(Action.SUGGEST_COMMAND, "/support"));
 		
-		t = new TextComponent("[PumpMyStaff] En cas de problème, le staff est là pour vous via la commande ");
+		t = new TextComponent("[PumpMyStaff] En cas de problÃ¨me, le staff est lï¿½ pour vous via la commande ");
 		t.setColor(ChatColor.AQUA);
 		
 		t.addExtra(url);
@@ -95,7 +95,7 @@ public class AutoBroadcastManager {
 		url.setColor(ChatColor.RED);
 		url.setClickEvent(new ClickEvent(Action.SUGGEST_COMMAND, "/rules"));
 		
-		t = new TextComponent("[PumpMyHelp] Pour consulter la liste des règles du serveur, faites ");
+		t = new TextComponent("[PumpMyHelp] Pour consulter la liste des rÃ¨gles du serveur, faites ");
 		t.setColor(ChatColor.BLUE);
 		
 		t.addExtra(url);
