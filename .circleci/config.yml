@@ -39,5 +39,7 @@ jobs:
       
       # build jar
       - run: mvn clean install
+      
+      - run: ls -l
 
 
