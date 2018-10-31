@@ -21,6 +21,7 @@ public class CoinsManager {
 		registerMessagingPluginEvent(cm);
 		
 		return cm;
+		
 	}
 	
 	private static void registerCommands(CoinsManager cm) {
@@ -37,11 +38,15 @@ public class CoinsManager {
 	}
 
 	public static MainBungeeUtils getMainInstance() {
+		
 		return m;
+		
 	}
 
 	public static void setMainInstance(MainBungeeUtils m) {
+		
 		CoinsManager.m = m;
+		
 	}
 	
 	public void initPlayer(ProxiedPlayer p) {
