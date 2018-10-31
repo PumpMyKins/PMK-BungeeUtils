@@ -26,20 +26,20 @@ public class MessageServer extends Command {
 			}else {
 				
 				String msg = new String();
-				for(int i = 2; i<= args.length - 1; i++) {
+				for(int i = 1; i<= args.length - 1; i++) {
 					
 					msg = msg + args[i];
 				}
 				
 				try {
-					player.sendMessage(new TextComponent("§7[Toi->"
-					+ProxyServer.getInstance().getPlayer(args[1]).getName()
-					+"§7] "
+					player.sendMessage(new TextComponent("§2[§r§9Toi§r§4->§r§b"
+					+ProxyServer.getInstance().getPlayer(args[0]).getName()
+					+"§r§2]§r"
 					+msg));
 					
-					ProxyServer.getInstance().getPlayer(args[1]).sendMessage(new TextComponent("§7["
+					ProxyServer.getInstance().getPlayer(args[0]).sendMessage(new TextComponent("§2[§r§b"
 					+player.getName()
-					+"§7->Toi] "
+					+"§r§4->§2[§r§9Toi§r§2]§r"
 					+msg));
 				} catch (NullPointerException e) {
 					player.sendMessage(new TextComponent("§c Joueurs introuvable"));
