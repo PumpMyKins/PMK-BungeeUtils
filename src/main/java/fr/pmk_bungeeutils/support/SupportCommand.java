@@ -46,7 +46,7 @@ public class SupportCommand extends Command {
 			for (Entry<ProxiedPlayer, SupportData> e : h.entrySet()) {
 				
 				if(e.getValue().getState()) {
-						e.getKey().sendMessage(new TextComponent("§9[ " + e.getKey().getServer().getInfo().getName() + " ]§7§l<§r§1" + p.getDisplayName() + "§7§l>§r " + msg));
+						e.getKey().sendMessage(new TextComponent("§9[ " + p.getServer().getInfo().getName() + " ]§7§l<§r§1" + p.getDisplayName() + "§7§l>§r " + msg));
 				}
 				
 			}
