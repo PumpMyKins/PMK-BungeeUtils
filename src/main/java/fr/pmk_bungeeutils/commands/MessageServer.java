@@ -52,7 +52,7 @@ public class MessageServer extends Command implements TabExecutor{
 					player.sendMessage(FromTo, sendMsg);
 					ProxyServer.getInstance().getPlayer(args[0]).sendMessage(ToFrom, receiveMsg);
 					
-				} catch (NullPointerException e) {
+				} catch (NullPointerException e) { 
 					player.sendMessage(new TextComponent("§c Joueurs introuvable"));
 				}
 			}
