@@ -1,5 +1,8 @@
 package fr.pmk_bungeeutils.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.ServerPing.PlayerInfo;
@@ -9,8 +12,9 @@ import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
+import net.md_5.bungee.api.plugin.TabExecutor;
 
-public class MessageServer extends Command {
+public class MessageServer extends Command implements TabExecutor{
 
 	public MessageServer(String name) {
 		super(name);
@@ -31,7 +35,7 @@ public class MessageServer extends Command {
 				String msg = new String();
 				for(int i = 1; i<= args.length - 1; i++) {
 					
-					msg = msg + args[i] + " ";
+					msg += args[i] + " ";
 				}
 				
 				try {
@@ -55,6 +59,21 @@ public class MessageServer extends Command {
 			
 		}
 
+	}
+
+	@Override
+	public Iterable<String> onTabComplete(CommandSender sender, String[] args) {		
+		// TODO Auto-generated method stub
+		ArrayList<String> l = new ArrayList<>();
+		
+		for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers()) {
+			
+			l.add(player.getDisplayName());
+			
+		}
+		
+		return l;
+		
 	}
 
 }

@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.pmk_bungeeutils.autobroadcast.AutoBroadcastManager;
-import fr.pmk_bungeeutils.blockmod.BlockModCommand;
-import fr.pmk_bungeeutils.blockmod.BlockModListener;
-import fr.pmk_bungeeutils.blockmod.BlockModManager;
 import fr.pmk_bungeeutils.coins.CoinsManager;
 import fr.pmk_bungeeutils.commands.Aide;
 import fr.pmk_bungeeutils.commands.BroadcastAll;
@@ -50,14 +47,6 @@ public class MainBungeeUtils extends Plugin{
 		configUtils.initAndGetFile("aide.yml");
 		
 		configUtils.initPlayerLogin();
-		
-		//////////////////// BLOCKMOD ///////////////////////////////////////
-		
-		BlockModManager.init(configUtils);
-		
-		//////////////////// HOTBARCONNECT v3 ///////////////////////////////////////
-		
-		
 		
 		////////////////////INIT BDD CONNECTOR ///////////////////////////////////////
 		
@@ -130,10 +119,6 @@ public class MainBungeeUtils extends Plugin{
 		//init listener
 		getProxy().getPluginManager().registerListener(this, new PlayerListener());
 		
-		//init BlockMod
-		getProxy().getPluginManager().registerListener(this, new BlockModListener());
-		getProxy().getPluginManager().registerCommand(this, new BlockModCommand());
-		
 		// init support
 		getProxy().getPluginManager().registerCommand(this, new EnSupportCommand());
 		getProxy().getPluginManager().registerCommand(this, new SupportCommand());
@@ -156,7 +141,6 @@ public class MainBungeeUtils extends Plugin{
 	public void onDisable() {
 		// TODO Auto-generated method stub
 		configUtils.setConfigPlayerList(ConfigUtils.getPlayerList());
-		BlockModManager.save(configUtils);
 	}
 	
 	@Override
@@ -174,22 +158,6 @@ public class MainBungeeUtils extends Plugin{
 	
 	public static MainBungeeUtils getInstance() {
 		return instance;
-	}
-
-	public static void updatePlayer() {
-		// TODO Auto-generated method stub
-		if(BlockModManager.isActive()) {
-			
-			for(ProxiedPlayer p: instance.getProxy().getPlayers()){
-	        	
-	            if(!p.hasPermission(BlockModManager.getOverPerm())) {
-	            	p.disconnect(new TextComponent("§4§l[§r§6PUMPMYCORD§r§4§l]§c Le serveur est maintenant indisponible ! (" + BlockModManager.getRaison() + ")"));
-	            }
-	            
-	        }
-			
-		}
-		
 	}
 	
 	public static void sendAllPlayerMsg(TextComponent t) {
