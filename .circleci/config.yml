@@ -39,5 +39,8 @@ jobs:
         
       # run tests!
       - run: mvn integration-test
+      
+      # build jar
+      - run: mvn clean install
 
 
