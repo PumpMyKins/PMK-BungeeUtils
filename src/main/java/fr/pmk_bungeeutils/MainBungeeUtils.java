@@ -16,12 +16,9 @@ import fr.pmk_bungeeutils.commands.Rules;
 import fr.pmk_bungeeutils.config.ConfigPlayerSaveScheduler;
 import fr.pmk_bungeeutils.config.ConfigUtils;
 import fr.pmk_bungeeutils.config.MySQLConnector;
-import fr.pmk_bungeeutils.discord.MisterPorg;
 import fr.pmk_bungeeutils.listener.PlayerListener;
-import fr.pmk_bungeeutils.network.PluginMessagingManager;
 import fr.pmk_bungeeutils.pmkbuy.BuyInfoCommand;
 import fr.pmk_bungeeutils.scheduler.BuyCraftScheduler;
-import fr.pmk_bungeeutils.security.SessionLoggerUtils;
 import fr.pmk_bungeeutils.support.EnSupportCommand;
 import fr.pmk_bungeeutils.support.SupportCommand;
 import fr.pmk_bungeeutils.support.SupportListener;
@@ -34,9 +31,6 @@ public class MainBungeeUtils extends Plugin{
 
 	private static ConfigUtils configUtils;
 	private static MainBungeeUtils instance;
-	private static MisterPorg misterPorg;
-	
-	private static PluginMessagingManager plg;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -57,26 +51,9 @@ public class MainBungeeUtils extends Plugin{
 		
 		configUtils.initPlayerLogin();
 		
-		//////////////////// BOT DISCORD ///////////////////////////////////////
-		
-		System.out.println("Mister Porg init");
-		String token = configUtils.getBotToken();
-		
-		if(!token.equals("no-token")) {
-			System.out.println("Mister Porg token found");
-			misterPorg = new MisterPorg();
-			
-			//misterPorg.start(token);
-			
-		}
-		
 		//////////////////// BLOCKMOD ///////////////////////////////////////
 		
 		BlockModManager.init(configUtils);
-		
-		//////////////////// PLUGIN MESSAGING MANAGER ////////////////////////////////
-		
-		plg = PluginMessagingManager.init(this);
 		
 		//////////////////// HOTBARCONNECT v3 ///////////////////////////////////////
 		
@@ -105,7 +82,7 @@ public class MainBungeeUtils extends Plugin{
 			Configuration conf = configUtils.getConfiguration("config.yml");
 			
 			server = conf.getString("lobby.name");
-			message = conf.getString("lobby.message").replace("&", "§");
+			message = conf.getString("lobby.message").replace("&", "ï¿½");
 			
 			
 		} catch (Exception e) {
@@ -206,7 +183,7 @@ public class MainBungeeUtils extends Plugin{
 			for(ProxiedPlayer p: instance.getProxy().getPlayers()){
 	        	
 	            if(!p.hasPermission(BlockModManager.getOverPerm())) {
-	            	p.disconnect(new TextComponent("§4§l[§r§6PUMPMYCORD§r§4§l]§c Le serveur est maintenant indisponible ! (" + BlockModManager.getRaison() + ")"));
+	            	p.disconnect(new TextComponent("ï¿½4ï¿½l[ï¿½rï¿½6PUMPMYCORDï¿½rï¿½4ï¿½l]ï¿½c Le serveur est maintenant indisponible ! (" + BlockModManager.getRaison() + ")"));
 	            }
 	            
 	        }
@@ -223,18 +200,6 @@ public class MainBungeeUtils extends Plugin{
 			
 		}
 		
-	}
-
-	public static MisterPorg getMisterPorg() {
-		return misterPorg;
-	}
-
-	public static void setMisterPorg(MisterPorg misterPorg) {
-		MainBungeeUtils.misterPorg = misterPorg;
-	}
-
-	public static PluginMessagingManager getMessagingManager() {
-		return plg;
 	}
 	
 }
