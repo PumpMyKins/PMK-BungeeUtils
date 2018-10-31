@@ -67,7 +67,7 @@ public class AutoBroadcastManager {
 		url.setColor(ChatColor.RED);
 		url.setClickEvent(new ClickEvent(Action.SUGGEST_COMMAND, "/support"));
 		
-		t = new TextComponent("[PumpMyStaff] En cas de problème, le staff est l� pour vous via la commande ");
+		t = new TextComponent("[PumpMyStaff] En cas de problème, le staff est là pour vous via la commande ");
 		t.setColor(ChatColor.AQUA);
 		
 		t.addExtra(url);
