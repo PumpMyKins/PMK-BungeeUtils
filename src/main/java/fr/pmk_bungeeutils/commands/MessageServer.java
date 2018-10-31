@@ -19,26 +19,31 @@ public class MessageServer extends Command {
 		if(sender instanceof ProxiedPlayer) {
 			ProxiedPlayer player = (ProxiedPlayer) sender;
 			
-			if(args.length <= 1 || !args[1].equalsIgnoreCase(ProxyServer.getInstance().getPlayer(args[1]).getName()) ) {
+			if(args.length <= 1 ) {
 				
 				player.sendMessage(new TextComponent("§cEssayez /msg <joueur> <message>"));
 				
 			}else {
 				
-				StringBuilder msg = new StringBuilder();
-				for(String msgs : args) {
-					msg.append(msgs.replace(args[0], null).replace(args[1], null) + " ");
+				String msg = new String();
+				for(int i = 2; i<= args.length - 1; i++) {
+					
+					msg = msg + args[i];
 				}
 				
-				player.sendMessage(new TextComponent("§7[Toi->"
-				+ProxyServer.getInstance().getPlayer(args[1]).getName()
-				+"§7] "
-				+msg.toString()));
-				
-				ProxyServer.getInstance().getPlayer(args[1]).sendMessage(new TextComponent("§7["
-				+player.getName()
-				+"§7->Toi] "
-				+msg.toString()));
+				try {
+					player.sendMessage(new TextComponent("§7[Toi->"
+					+ProxyServer.getInstance().getPlayer(args[1]).getName()
+					+"§7] "
+					+msg));
+					
+					ProxyServer.getInstance().getPlayer(args[1]).sendMessage(new TextComponent("§7["
+					+player.getName()
+					+"§7->Toi] "
+					+msg));
+				} catch (NullPointerException e) {
+					player.sendMessage(new TextComponent("§c Joueurs introuvable"));
+				}
 			}
 			
 		}
