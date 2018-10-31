@@ -25,6 +25,7 @@ public class BroadcastAll extends Command {
 				if(args.length >= 1) {
 					StringBuilder bc = new StringBuilder();
 					for(String port : args) {
+						port = port.replace("&", "§");
 						bc.append(port + " ");
 					}
 					
@@ -37,11 +38,13 @@ public class BroadcastAll extends Command {
 			
 			if(args.length == 0) {
 				sender.sendMessage(new TextComponent("§cEssayez /bcall <message>"));
+				return;
 			}
+			
 			if(args.length >= 1) {
 				StringBuilder bc = new StringBuilder();
 				for(String port : args) {
-					port.replace("&", "§");
+					port = port.replace("&", "§");
 					bc.append(port + " ");
 				}
 				
