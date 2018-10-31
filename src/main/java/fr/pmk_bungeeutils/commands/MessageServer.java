@@ -28,7 +28,7 @@ public class MessageServer extends Command implements TabExecutor{
 			
 			if(args.length <= 1 ) {
 				
-				player.sendMessage(new TextComponent("§cEssayez /msg <joueur> <message>"));
+				player.sendMessage(new TextComponent("§c§lEssayez /msg <joueur> <message>"));
 				
 			}else {
 				
@@ -39,18 +39,21 @@ public class MessageServer extends Command implements TabExecutor{
 				}
 				
 				try {
-					TextComponent FromTo = new TextComponent("§1[§r§9Toi§r§4->§r§b" + ProxyServer.getInstance().getPlayer(args[0]).getName() +"§r§1]§r");
+					TextComponent fromTo = new TextComponent("§1[§r§9Toi§r§4->§r§b" + ProxyServer.getInstance().getPlayer(args[0]).getName() +"§r§1]§r");
 					TextComponent sendMsg = new TextComponent(" " + msg+ " ");
-					FromTo.setHoverEvent(new HoverEvent (HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(" Cliquez pour renvoyer un message ! ").create() ));
-					FromTo.setClickEvent(new ClickEvent (ClickEvent.Action.SUGGEST_COMMAND, (" /msg " + ProxyServer.getInstance().getPlayer(args[0]).getName() )));
+					fromTo.setHoverEvent(new HoverEvent (HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(" Cliquez pour renvoyer un message ! ").create() ));
+					fromTo.setClickEvent(new ClickEvent (ClickEvent.Action.SUGGEST_COMMAND, (" /msg " + ProxyServer.getInstance().getPlayer(args[0]).getName() )));
 					
-					TextComponent ToFrom = new TextComponent("§1[§r§b\" +player.getName() + \"§r§4->§r§9Toi§r§1]§r");
-					TextComponent receiveMsg = new TextComponent(" " + msg + " ");
-					ToFrom.setHoverEvent(new HoverEvent (HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(" Cliquez pour renvoyer un message ! ").create() ));
-					ToFrom.setClickEvent(new ClickEvent (ClickEvent.Action.SUGGEST_COMMAND, (" /msg " + ProxyServer.getInstance().getPlayer(args[0]).getName() )));
-
-					player.sendMessage(FromTo, sendMsg);
-					ProxyServer.getInstance().getPlayer(args[0]).sendMessage(ToFrom, receiveMsg);
+					
+					TextComponent toFrom = new TextComponent("§1[§r§b\" +player.getName() + \"§r§4->§r§9Toi§r§1]§r");
+					toFrom.setHoverEvent(new HoverEvent (HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(" Cliquez pour répondre ! ").create() ));
+					toFrom.setClickEvent(new ClickEvent (ClickEvent.Action.SUGGEST_COMMAND, (" /msg " + player.getName() )));
+					
+					fromTo.addExtra(sendMsg);
+					toFrom.addExtra(sendMsg);
+					
+					player.sendMessage(fromTo);
+					ProxyServer.getInstance().getPlayer(args[0]).sendMessage(toFrom);
 					
 				} catch (NullPointerException e) { 
 					player.sendMessage(new TextComponent("§c Joueurs introuvable"));
