@@ -28,7 +28,7 @@ public class MessageServer extends Command {
 				String msg = new String();
 				for(int i = 1; i<= args.length - 1; i++) {
 					
-					msg = msg + args[i] + " ";
+					msg += args[i] + " ";
 				}
 				
 				try {
