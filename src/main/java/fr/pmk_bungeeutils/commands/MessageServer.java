@@ -3,6 +3,9 @@ package fr.pmk_bungeeutils.commands;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.ServerPing.PlayerInfo;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
@@ -32,15 +35,19 @@ public class MessageServer extends Command {
 				}
 				
 				try {
-					player.sendMessage(new TextComponent("§1[§r§9Toi§r§4->§r§b"
-					+ProxyServer.getInstance().getPlayer(args[0]).getName()
-					+"§r§1]§r"
-					+msg));
+					TextComponent FromTo = new TextComponent("§1[§r§9Toi§r§4->§r§b" + ProxyServer.getInstance().getPlayer(args[0]).getName() +"§r§1]§r");
+					TextComponent sendMsg = new TextComponent(" " + msg+ " ");
+					FromTo.setHoverEvent(new HoverEvent (HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(" Cliquez pour renvoyer un message ! ").create() ));
+					FromTo.setClickEvent(new ClickEvent (ClickEvent.Action.SUGGEST_COMMAND, (" /msg " + ProxyServer.getInstance().getPlayer(args[0]).getName() )));
 					
-					ProxyServer.getInstance().getPlayer(args[0]).sendMessage(new TextComponent("§1[§r§b"
-					+player.getName()
-					+"§r§4->§r§9Toi§r§1]§r"
-					+msg));
+					TextComponent ToFrom = new TextComponent("§1[§r§b\" +player.getName() + \"§r§4->§r§9Toi§r§1]§r");
+					TextComponent receiveMsg = new TextComponent(" " + msg + " ");
+					ToFrom.setHoverEvent(new HoverEvent (HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(" Cliquez pour renvoyer un message ! ").create() ));
+					ToFrom.setClickEvent(new ClickEvent (ClickEvent.Action.SUGGEST_COMMAND, (" /msg " + ProxyServer.getInstance().getPlayer(args[0]).getName() )));
+
+					player.sendMessage(FromTo, sendMsg);
+					ProxyServer.getInstance().getPlayer(args[0]).sendMessage(ToFrom, receiveMsg);
+					
 				} catch (NullPointerException e) {
 					player.sendMessage(new TextComponent("§c Joueurs introuvable"));
 				}
