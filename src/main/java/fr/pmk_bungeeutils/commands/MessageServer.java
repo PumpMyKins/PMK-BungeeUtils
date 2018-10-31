@@ -32,14 +32,14 @@ public class MessageServer extends Command {
 				}
 				
 				try {
-					player.sendMessage(new TextComponent("§7[Toi->"
+					player.sendMessage(new TextComponent("§2[§r§9Toi§r§4->§r§b"
 					+ProxyServer.getInstance().getPlayer(args[0]).getName()
-					+"§7] "
+					+"§r§2]§r"
 					+msg));
 					
-					ProxyServer.getInstance().getPlayer(args[0]).sendMessage(new TextComponent("§7["
+					ProxyServer.getInstance().getPlayer(args[0]).sendMessage(new TextComponent("§2[§r§b"
 					+player.getName()
-					+"§7->Toi] "
+					+"§r§4->§2[§r§9Toi§r§2]§r"
 					+msg));
 				} catch (NullPointerException e) {
 					player.sendMessage(new TextComponent("§c Joueurs introuvable"));
