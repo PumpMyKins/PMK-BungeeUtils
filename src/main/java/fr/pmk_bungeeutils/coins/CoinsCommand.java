@@ -28,19 +28,19 @@ public class CoinsCommand extends Command {
 			try {
 				
 				int coins = cm.getPlayerCoins(p);
-				p.sendMessage(new TextComponent("§a§l[ PumpMyCoins ]§r§2 Vous avez §b" + coins + "§2 coins !"));	
+				p.sendMessage(new TextComponent("Â§aÂ§l[ PumpMyCoins ]Â§rÂ§2 Vous avez Â§b" + coins + "Â§2 coins !"));	
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				
 				e.printStackTrace();
-				p.sendMessage(new TextComponent("§a§l[ PumpMyCoins ]§r§c Erreur de récupération des coins, contactez le staff !"));
+				p.sendMessage(new TextComponent("Â§aÂ§l[ PumpMyCoins ]Â§rÂ§c Erreur de rÃ©cupÃ©ration des coins, contactez le staff !"));
 				
 			}
 			
 		}else {
 			
-			sender.sendMessage(new TextComponent("§a§l[ PumpMyCoins ]§r§cImpossible ici !"));
+			sender.sendMessage(new TextComponent("Â§aÂ§l[ PumpMyCoins ]Â§rÂ§cImpossible ici !"));
 			return;
 			
 		}

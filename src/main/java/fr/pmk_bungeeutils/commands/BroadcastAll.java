@@ -41,6 +41,7 @@ public class BroadcastAll extends Command {
 			if(args.length >= 1) {
 				StringBuilder bc = new StringBuilder();
 				for(String port : args) {
+					port.replace("&", "§");
 					bc.append(port + " ");
 				}
 				

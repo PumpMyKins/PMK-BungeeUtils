@@ -24,15 +24,15 @@ public class Rules extends Command {
 			
 			ProxiedPlayer player = (ProxiedPlayer) sender;
 			
-			player.sendMessage(new TextComponent("§3§l=======§r§b PumpMyRules§r§3§l ======="));
+			player.sendMessage(new TextComponent("Â§3Â§l=======Â§rÂ§b PumpMyRulesÂ§rÂ§3Â§l ======="));
 			
 			for (String string : list) {
 				
-				player.sendMessage(new TextComponent("- " + string.replace("&", "§")));
+				player.sendMessage(new TextComponent("- " + string.replace("&", "Â§")));
 				
 			}
 			
-			player.sendMessage(new TextComponent("§3§l=========================="));
+			player.sendMessage(new TextComponent("Â§3Â§l=========================="));
 			
 		}
 

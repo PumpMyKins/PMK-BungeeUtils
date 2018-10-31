@@ -19,23 +19,25 @@ public class MessageServer extends Command {
 		if(sender instanceof ProxiedPlayer) {
 			ProxiedPlayer player = (ProxiedPlayer) sender;
 			
-			if(args.length <= 1) {
-				player.sendMessage(new TextComponent("§cEssayez /msg <joueur> <message>"));
-			}
-			if(args.length >= 1 && args[1].equalsIgnoreCase(ProxyServer.getInstance().getPlayer(args[1]).getName())) {
+			if(args.length <= 1 || !args[1].equalsIgnoreCase(ProxyServer.getInstance().getPlayer(args[1]).getName()) ) {
+				
+				player.sendMessage(new TextComponent("Â§cEssayez /msg <joueur> <message>"));
+				
+			}else {
+				
 				StringBuilder msg = new StringBuilder();
 				for(String msgs : args) {
 					msg.append(msgs.replace(args[0], null).replace(args[1], null) + " ");
 				}
 				
-				player.sendMessage(new TextComponent("§7[Toi->"
+				player.sendMessage(new TextComponent("Â§7[Toi->"
 				+ProxyServer.getInstance().getPlayer(args[1]).getName()
-				+"§7] "
+				+"Â§7] "
 				+msg.toString()));
 				
-				ProxyServer.getInstance().getPlayer(args[1]).sendMessage(new TextComponent("§7["
+				ProxyServer.getInstance().getPlayer(args[1]).sendMessage(new TextComponent("Â§7["
 				+player.getName()
-				+"§7->Toi] "
+				+"Â§7->Toi] "
 				+msg.toString()));
 			}
 			

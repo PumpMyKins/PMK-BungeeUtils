@@ -22,15 +22,15 @@ public class Aide extends Command {
 		if(sender instanceof ProxiedPlayer) {
 			ProxiedPlayer player = (ProxiedPlayer) sender;
 				
-			player.sendMessage(new TextComponent("§3§l=======§r§b PumpMyAide§r§3§l ======="));
+			player.sendMessage(new TextComponent("Â§3Â§l=======Â§rÂ§b PumpMyAideÂ§rÂ§3Â§l ======="));
 			
 			for (String string : list) {
 				
-				player.sendMessage(new TextComponent("- " + string.replace("&", "§")));
+				player.sendMessage(new TextComponent("- " + string.replace("&", "Â§")));
 				
 			}
 			
-			player.sendMessage(new TextComponent("§3§l=========================="));
+			player.sendMessage(new TextComponent("Â§3Â§l=========================="));
 			
 		}
 

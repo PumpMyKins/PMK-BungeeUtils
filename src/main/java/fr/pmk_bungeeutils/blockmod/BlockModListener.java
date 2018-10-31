@@ -16,7 +16,7 @@ public class BlockModListener implements Listener {
 		if(BlockModManager.isActive()) {
 			if(!p.hasPermission(BlockModManager.getOverPerm())) {
 
-				p.disconnect(new TextComponent("§4§l[§r§6PUMPMYCORD§r§4§l]§c Le serveur est actuellement indisponible ! (" + BlockModManager.getRaison() + ")"));
+				p.disconnect(new TextComponent("Â§4Â§l[Â§rÂ§6PUMPMYCORDÂ§rÂ§4Â§l]Â§c Le serveur est actuellement indisponible ! (" + BlockModManager.getRaison() + ")"));
 				
 			}
 		}

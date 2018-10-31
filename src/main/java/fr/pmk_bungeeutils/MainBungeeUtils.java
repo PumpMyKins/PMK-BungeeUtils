@@ -82,7 +82,7 @@ public class MainBungeeUtils extends Plugin{
 			Configuration conf = configUtils.getConfiguration("config.yml");
 			
 			server = conf.getString("lobby.name");
-			message = conf.getString("lobby.message").replace("&", "�");
+			message = conf.getString("lobby.message").replace("&", "§");
 			
 			
 		} catch (Exception e) {
@@ -183,7 +183,7 @@ public class MainBungeeUtils extends Plugin{
 			for(ProxiedPlayer p: instance.getProxy().getPlayers()){
 	        	
 	            if(!p.hasPermission(BlockModManager.getOverPerm())) {
-	            	p.disconnect(new TextComponent("�4�l[�r�6PUMPMYCORD�r�4�l]�c Le serveur est maintenant indisponible ! (" + BlockModManager.getRaison() + ")"));
+	            	p.disconnect(new TextComponent("§4§l[§r§6PUMPMYCORD§r§4§l]§c Le serveur est maintenant indisponible ! (" + BlockModManager.getRaison() + ")"));
 	            }
 	            
 	        }
