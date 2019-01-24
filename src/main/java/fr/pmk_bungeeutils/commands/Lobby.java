@@ -48,7 +48,7 @@ public class Lobby extends Command {
 		        }, 3 , TimeUnit.SECONDS);
 					
 			}else {
-								player.sendMessage(new TextComponent("§cVous etes déjà connecté au serveur lobby"));	
+								player.sendMessage(new TextComponent("Â§cVous etes dÃ©jÃ  connectÃ© au serveur lobby"));	
 				
 			}
 		}

@@ -29,7 +29,7 @@ public class PlayerListener implements Listener {
 				listPlayer.add(pUUID);
 				//affichage du message de bienvenue
 				for(ProxiedPlayer pList: MainBungeeUtils.getInstance().getProxy().getPlayers()){	        	
-					pList.sendMessage(new TextComponent("ง2งkabงr" + "ง6Bienvenue เ งeงl" + pName + "งrง6, le งbงl" + (listPlayer.size()-1) + "งrง6่me joueurs ! ง2งkab"));
+					pList.sendMessage(new TextComponent("ยง2ยงkabยงr" + "ยง6Bienvenue ร  ยงeยงl" + pName + "ยงrยง6, le ยงbยงl" + (listPlayer.size()-1) + "ยงrยง6รจme joueurs ! ยง2ยงkab"));
 		        }
 			}
 			

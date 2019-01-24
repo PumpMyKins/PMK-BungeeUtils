@@ -25,7 +25,7 @@ public class ConfigUtils {
 	/**
 	 * 
 	 * @param m MainBungeeMotd / instance de la class principale
-	 * @return Instance de ConfigUtils initialisé au paramètre MainBungeeMotd donné
+	 * @return Instance de ConfigUtils initialisÃ© au paramÃ©tre MainBungeeMotd donnÃ©
 	 */
 	public static ConfigUtils getConfig(MainBungeeUtils m) {		//Methods d'initialisation de la class ConfigUtils
 		main = m;
@@ -69,7 +69,7 @@ public class ConfigUtils {
 		try {
 			return ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
 		} catch (Exception e) {
-			throw new Exception( fileName + " impossible de récupérer la configuration" );
+			throw new Exception( fileName + " impossible de rÃ©cupÃ©rer la configuration" );
 		}		
 	}
 	

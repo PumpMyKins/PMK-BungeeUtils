@@ -25,7 +25,7 @@ public class SupportCommand extends Command {
 			String msg = "";
 			
 			if(args.length < 4) {
-				p.sendMessage(new TextComponent("§9[SUPPORT]§c 4 mots minimum demandés !"));
+				p.sendMessage(new TextComponent("Â§9[SUPPORT]Â§c 4 mots minimum demandÃ©s !"));
 				return;
 			}
 			
@@ -35,18 +35,18 @@ public class SupportCommand extends Command {
 			
 			HashMap<ProxiedPlayer, SupportData> h = EnSupportCommand.getSupportMap();
 			
-			p.sendMessage(new TextComponent("§9[SUPPORT]§7§l<§r§1" + p.getDisplayName() + "§7§l>§r Votre message à bien été envoyé au support."));
+			p.sendMessage(new TextComponent("Â§9[SUPPORT]Â§7Â§l<Â§rÂ§1" + p.getDisplayName() + "Â§7Â§l>Â§r Votre message Ã  bien Ã©tÃ© envoyÃ© au support."));
 			
 			if(h.size() == 0) {
 				
-				p.sendMessage(new TextComponent("§9[SUPPORT]§r Il n'y a pas de staff présent, merci d'utiliser le discord."));
+				p.sendMessage(new TextComponent("Â§9[SUPPORT]Â§r Il n'y a pas de staff prÃ©sent, merci d'utiliser le discord."));
 				
 			}
 			
 			for (Entry<ProxiedPlayer, SupportData> e : h.entrySet()) {
 				
 				if(e.getValue().getState()) {
-						e.getKey().sendMessage(new TextComponent("§9[ " + e.getKey().getServer().getInfo().getName() + " ]§7§l<§r§1" + p.getDisplayName() + "§7§l>§r " + msg));
+						e.getKey().sendMessage(new TextComponent("Â§9[ " + p.getServer().getInfo().getName() + " ]Â§7Â§l<Â§rÂ§1" + p.getDisplayName() + "Â§7Â§l>Â§r " + msg));
 				}
 				
 			}
